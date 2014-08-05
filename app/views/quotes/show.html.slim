@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Body:
+  = @quote.body
+p
+  strong Description:
+  = @quote.description
+p
+  strong Approved:
+  = @quote.approved
+p
+  strong Deleted:
+  = @quote.deleted
+p
+  strong Flagged:
+  = @quote.flagged
+
+= link_to 'Edit', edit_quote_path(@quote)
+'|
+= link_to 'Back', quotes_path
