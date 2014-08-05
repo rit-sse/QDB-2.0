@@ -8,6 +8,11 @@ Rewrite of the SSE QDB using rails 4.1 and some other technologies not yet decid
 * Slim
 * Polymer
 
+# Dependencies
+* Ruby 1.9.3+
+* Node and NPM
+* Bower
+
 ## Development
 
 1. `bundle install`
