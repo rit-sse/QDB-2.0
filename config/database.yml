@@ -10,16 +10,21 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
+  adapter: sqlite3
   database: db/development.sqlite3
+  timeout: 5000
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
+test: &test
+  adapter: sqlite3
   database: db/test.sqlite3
+  timeout: 5000
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: qdb_production
+  pool: 5
+  min_messages: warning #magic sauce
+  username: qdb
+  password:
