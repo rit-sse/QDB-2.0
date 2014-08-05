@@ -4,16 +4,17 @@ Rewrite of the SSE QDB using rails 4.1 and some other technologies not yet decid
 
 ## Technologies
 * Rails 4.1
-* Ruby 2.0
+* Ruby
 * Slim
 * Polymer
 
-## Dependencies
+## Development Dependencies
 * Ruby 1.9.3+
+* Bundler
 * Node and NPM
 * Bower
 
-## Development
+## How to run
 
 1. `bundle install`
 2. `rake db:create`
