@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20120904194449) do
+ActiveRecord::Schema.define(version: 20140805034257) do
 
   create_table "quotes", force: true do |t|
     t.text     "body"
@@ -23,15 +23,27 @@ ActiveRecord::Schema.define(version: 20120904194449) do
     t.integer  "rating"
   end
 
-  create_table "quotes_tags", id: false, force: true do |t|
-    t.integer "quote_id"
-    t.integer "tag_id"
+  create_table "taggings", id: false, force: true do |t|
+    t.integer  "taggable_id"
+    t.integer  "tag_id"
+    t.string   "taggable_type"
+    t.string   "context",       limit: 128
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "taggings_count", default: 0
   end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
 end
