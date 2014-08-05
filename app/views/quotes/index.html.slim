@@ -6,7 +6,6 @@ table
       th Body
       th Description
       th Approved
-      th Deleted
       th Flagged
       th
       th
@@ -18,7 +17,6 @@ table
         td = quote.body
         td = quote.description
         td = quote.approved
-        td = quote.deleted
         td = quote.flagged
         td = link_to 'Show', quote
         td = link_to 'Edit', edit_quote_path(quote)

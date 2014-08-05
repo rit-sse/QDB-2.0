@@ -1,1 +1,1 @@
-json.extract! @quote, :id, :body, :description, :approved, :deleted, :flagged, :created_at, :updated_at
+json.extract! @quote, :id, :body, :description, :approved, :flagged, :created_at, :updated_at
