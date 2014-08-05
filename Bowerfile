@@ -1,0 +1,3 @@
+asset 'polymer', github: 'Polymer/polymer'
+asset 'core-elements', github: 'Polymer/core-elements'
+asset 'paper-elements', github: 'Polymer/paper-elements'
