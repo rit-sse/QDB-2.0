@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title QDB
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = html_import_tag 'core-header-panel/core-header-panel'
+    = html_import_tag 'core-toolbar/core-toolbar'
+    = html_import_tag 'core-icons/core-icons'
+    = html_import_tag 'paper-icon-button/paper-icon-button'
+    = html_import_tag 'paper-input/paper-input'
+  body unresolved='' fullbleed=''
+    core-header-panel mode='waterfall-tall' tallClass='medium-tall'
+      core-toolbar
+        span flex='' SSE QDB
+        paper-icon-button icon='search' onclick='searchToggle()'
+        paper-input#search flex='' style='display: none'
+
+      .content
+        = yield
+    javascript:
+      function searchToggle() {
+        $('#search').toggle();
+      }
