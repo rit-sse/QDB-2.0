@@ -13,7 +13,7 @@ html
   body unresolved='' fullbleed=''
     core-header-panel mode='waterfall-tall' tallClass='medium-tall'
       core-toolbar
-        span flex='' SSE QDB
+        span#header flex='' SSE QDB
         paper-icon-button icon='search' onclick='searchToggle()'
         paper-input#search flex='' style='display: none'
 
@@ -22,4 +22,5 @@ html
     javascript:
       function searchToggle() {
         $('#search').toggle();
+        $('#header').toggle();
       }
