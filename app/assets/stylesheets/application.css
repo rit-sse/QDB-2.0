@@ -16,7 +16,7 @@
  */
 body {
   font-family: 'Roboto', 'sans-serif';
-    background: #e0e0e0;
+    background: #fff;
 }
 
 core-header-panel {
@@ -28,12 +28,12 @@ core-header-panel {
 
 core-toolbar {
   background: #01579b;
-  color: #e0e0e0;
+  color: #fff;
 }
 
 #mainPanel {
   padding: 0 20px;
-  background: #e0e0e0;
+  background: #fff;
 }
 
 .focusedColor {
@@ -51,13 +51,13 @@ paper-input #underline {
 }
 
 #inputContainer input {
-  color: #e0e0e0;
+  color: #fff;
   font-size: 19px
 }
 
 a#logo {
   text-decoration: none;
-  color: #e0e0e0;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -81,10 +81,10 @@ paper-tabs.indent {
     width: 250px;
   }
   .card {
-    margin: 150px;
-    margin-top: 35px;
-    height: 200px;
+    margin: 50px;
     padding: 50px;
+    padding-top: 0px;
+    text-align: center;
   }
 }
 
@@ -97,5 +97,4 @@ paper-tabs paper-tab #tabContainer #ink {
 }
 
 .card {
-  background: white;
 }
