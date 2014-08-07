@@ -62,11 +62,8 @@ a#logo {
 }
 
 paper-tabs {
-  width: 160px;
-}
-
-paper-tabs.indent {
-  margin-left: 100px;
+  max-width: 160px;
+  height: 64px;
 }
 
 .card {
@@ -77,7 +74,7 @@ paper-tabs.indent {
 
 @media (min-width: 1200px) {
   paper-tabs {
-    width: 250px;
+    max-width: 400px;
   }
   .card {
     margin: 50px;

@@ -1,12 +1,15 @@
-core-header-panel mode='waterfall' tallClass='medium-tall' ng-controller='ToolbarController'
+core-header-panel mode='waterfall' ng-controller='ToolbarController'
   core-toolbar
-    a#logo href='#/' flex='' SSE QDB
+    span#logo flex=''
+    paper-tabs.fit flex='' ng-model='selected'
+      paper-tab
+        h2 SSE QDB
+      paper-tab Quotes
+      paper-tab Tags
     paper-icon-button icon='search' onclick='searchToggle()'
     paper-icon-button#createButton icon='create'
     paper-input#search flex='' style='display: none'
-    paper-tabs.bottom.indent ng-model='selected'
-      paper-tab Quotes
-      paper-tab Tags
+
   .content
     div ng-view=''
 
