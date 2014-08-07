@@ -10,17 +10,7 @@ html
     = html_import_tag 'core-icons/core-icons'
     = html_import_tag 'paper-icon-button/paper-icon-button'
     = html_import_tag 'paper-input/paper-input'
-  body unresolved='' fullbleed=''
-    core-header-panel mode='waterfall-tall' tallClass='medium-tall'
-      core-toolbar
-        span#header flex='' SSE QDB
-        paper-icon-button icon='search' onclick='searchToggle()'
-        paper-input#search flex='' style='display: none'
-
-      .content
-        = yield
-    javascript:
-      function searchToggle() {
-        $('#search').toggle();
-        $('#header').toggle();
-      }
+    = html_import_tag 'paper-tabs/paper-tabs'
+    = html_import_tag 'qdb-toolbar'
+  body unresolved='' fullbleed='' ng-app='QDB'
+    = yield

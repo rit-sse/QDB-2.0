@@ -1,0 +1,21 @@
+polymer-element name='qdb-toolbar'
+  template
+    core-toolbar.medium-tall
+      a#logo href='' ng-click='goTo("/")' flex='' SSE QDB
+      paper-icon-button icon='search' on-click='{{ searchToggle }}'
+      paper-icon-button#createButton icon='create'
+      paper-input#search flex='' style='display: none'
+
+      paper-tabs.bottom.fit
+        paper-tab Quotes
+        paper-tab Tags
+    .content
+      div ng-view=''
+  javascript:
+    Polymer('qdb-toolbar', {
+      searchToggle: function(){
+        $('#search').toggle();
+        $('#logo').toggle();
+        $('#createButton').toggle()
+      }
+    });

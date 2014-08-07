@@ -47,3 +47,15 @@ core-toolbar {
   color: #fff;
   font-size: 19px
 }
+
+a#logo {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+@media (min-width: 1200px) {
+  paper-tabs {
+    width: 200px;
+  }
+}
