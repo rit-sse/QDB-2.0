@@ -61,10 +61,30 @@ a#logo {
   cursor: pointer;
 }
 
+paper-tabs {
+  width: 160px;
+}
+
+paper-tabs.indent {
+  margin-left: 100px;
+}
+
+.card {
+  margin: 20px;
+  height: 225px;
+  padding: 30px;
+}
+
 
 @media (min-width: 1200px) {
   paper-tabs {
-    max-width: 400px;
+    width: 250px;
+  }
+  .card {
+    margin: 150px;
+    margin-top: 35px;
+    height: 200px;
+    padding: 50px;
   }
 }
 
@@ -74,4 +94,8 @@ paper-tabs #tabsContainer #selectionBar {
 
 paper-tabs paper-tab #tabContainer #ink {
   color: #03a9f4;
+}
+
+.card {
+  background: white;
 }
