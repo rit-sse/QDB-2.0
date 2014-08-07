@@ -16,5 +16,6 @@
 //= require turbolinks
 //= require angular/angular
 //= require angular-route/angular-route
+//= require ng-polymer-elements/ng-polymer-elements
 //= require qdb
 //= require_tree

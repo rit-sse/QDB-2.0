@@ -1,4 +1,19 @@
 core-header-panel mode='waterfall-tall' tallClass='medium-tall' ng-controller='ToolbarController'
-  qdb-toolbar
+  core-toolbar.medium-tall
+    a#logo href='#/' flex='' SSE QDB
+    paper-icon-button icon='search' onclick='searchToggle()'
+    paper-icon-button#createButton icon='create'
+    paper-input#search flex='' style='display: none'
+    paper-tabs.bottom.fit ng-model='selected'
+      paper-tab Quotes
+      paper-tab Tags
   .content
     div ng-view=''
+
+javascript:
+  function searchToggle(){
+    $('#search').toggle();
+    $('#logo').toggle();
+    $('#createButton').toggle()
+  }
+

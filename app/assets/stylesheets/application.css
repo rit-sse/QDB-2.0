@@ -26,7 +26,7 @@ core-header-panel {
 }
 
 core-toolbar {
-  background: #224687;
+  background: #01579b;
   color: #fff;
 }
 
@@ -35,8 +35,8 @@ core-toolbar {
 }
 
 .focusedColor {
-  color: #2ABFD4 !important;
-  background: #2ABFD4 !important;
+  color: #03a9f4 !important;
+  background: #03a9f4 !important;
 }
 
 #labelSpan {
@@ -51,11 +51,20 @@ core-toolbar {
 a#logo {
   text-decoration: none;
   color: #fff;
+  cursor: pointer;
 }
 
 
 @media (min-width: 1200px) {
   paper-tabs {
-    width: 200px;
+    max-width: 400px;
   }
+}
+
+paper-tabs #tabsContainer #selectionBar {
+  background-color: #03a9f4;
+}
+
+paper-tabs paper-tab #tabContainer #ink {
+  color: #03a9f4;
 }

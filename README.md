@@ -7,6 +7,7 @@ Rewrite of the SSE QDB using rails 4.1 and some other technologies not yet decid
 * Ruby
 * Slim
 * Polymer
+* AngularJS
 
 ## Development Dependencies
 * Ruby 1.9.3+
