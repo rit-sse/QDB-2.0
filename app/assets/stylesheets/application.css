@@ -70,9 +70,8 @@ paper-tabs.indent {
 }
 
 .card {
-  margin: 20px;
-  height: 225px;
-  padding: 30px;
+  text-align: center;
+  margin-top: 50px;
 }
 
 
@@ -84,7 +83,6 @@ paper-tabs.indent {
     margin: 50px;
     padding: 50px;
     padding-top: 0px;
-    text-align: center;
   }
 }
 
@@ -94,7 +92,4 @@ paper-tabs #tabsContainer #selectionBar {
 
 paper-tabs paper-tab #tabContainer #ink {
   color: #03a9f4;
-}
-
-.card {
 }
