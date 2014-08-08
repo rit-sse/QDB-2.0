@@ -49,26 +49,24 @@ document.addEventListener('core-media-change', function(e) {
     $('#tabs').hide();
     $('#menuicon').show();
     $('#logo').text('SSE QDB');
-    var drawer;
     try{
-      drawer = document.querySelector('core-drawer-panel::shadow #drawer');
+      var drawer = document.querySelector('core-drawer-panel::shadow #drawer');
+      $(drawer).css('display', 'none');
     } catch(err) {
-      drawer = document.querySelector('#drawer')
+      $('#drawer').css('display', 'none');
     }
-    $(drawer).css('display', 'block');
     $('core-header-panel[drawer]').css('display', 'block');
     matches = true
   } else {
     $('#tabs').show();
     $('#logo').text('');
     $('#menuicon').hide();
-    var drawer;
     try{
-      drawer = document.querySelector('core-drawer-panel::shadow #drawer');
+      var drawer = document.querySelector('core-drawer-panel::shadow #drawer');
+      $(drawer).css('display', 'none');
     } catch(err) {
-      drawer = document.querySelector('#drawer')
+      $('#drawer').css('display', 'none');
     }
-    $(drawer).css('display', 'none');
     $('core-header-panel[drawer]').css('display', 'none');
     matches = false
   }
