@@ -1,10 +1,14 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_quote, only: [:show, :edit, :update, :destroy, :approve, :deny]
+  has_scope :by_tag
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = Quote.all
+    @quotes = apply_scopes(Quote).approved
+  end
+
+  def admin_index
+    @quotes = Quote.needs_approval
   end
 
   # GET /quotes/1
@@ -12,26 +16,16 @@ class QuotesController < ApplicationController
   def show
   end
 
-  # GET /quotes/new
-  def new
-    @quote = Quote.new
-  end
-
-  # GET /quotes/1/edit
-  def edit
-  end
-
   # POST /quotes
   # POST /quotes.json
   def create
     @quote = Quote.new(quote_params)
+    @quote.tags = params[:tags]
 
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
         format.json { render :show, status: :created, location: @quote }
       else
-        format.html { render :new }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +36,8 @@ class QuotesController < ApplicationController
   def update
     respond_to do |format|
       if @quote.update(quote_params)
-        format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
         format.json { render :show, status: :ok, location: @quote }
       else
-        format.html { render :edit }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -61,6 +53,28 @@ class QuotesController < ApplicationController
     end
   end
 
+  def approve
+    @quote.approved = true
+    respond_to do |format|
+      if @quote.update(quote_params)
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def deny
+    @quote.approved = false
+    respond_to do |format|
+      if @quote.update(quote_params)
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quote
@@ -69,6 +83,6 @@ class QuotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
-      params.require(:quote).permit(:body, :description, :approved, :flagged)
+      params.require(:quote).permit(:body, :description)
     end
 end
