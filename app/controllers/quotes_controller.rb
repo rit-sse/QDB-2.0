@@ -20,7 +20,7 @@ class QuotesController < ApplicationController
   # POST /quotes.json
   def create
     @quote = Quote.new(quote_params)
-    @quote.tags = params[:tags]
+    @quote.tag_list = params[:tags]
 
     respond_to do |format|
       if @quote.save

@@ -4,7 +4,7 @@ class Quote < ActiveRecord::Base
 
   scope :approved, -> { where(approved: true) }
   scope :needs_approval, -> { where(approved: nil) }
-  scope :by_tagged, -> tag { tagged_with(tag) }
+  scope :by_tag, -> tag { tagged_with(tag) }
 
   def self.tags
     approved.inject([]) { |all, quote| all + quote.tags }.uniq

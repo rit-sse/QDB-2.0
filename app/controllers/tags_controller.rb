@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
 
   def index
-    @quotes = Quote.tags
+    @tags = Quote.tags
   end
 end
