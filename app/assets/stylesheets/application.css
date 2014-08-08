@@ -31,19 +31,24 @@ core-toolbar {
   color: #fff;
 }
 
-#mainPanel {
-  background: #fff;
+paper-input::shadow input {
+  color: #fff;
 }
 
-.focusedColor {
-  color: #03a9f4 !important;
-  background: #03a9f4 !important;
+#mainPanel {
+  background: #fff;
 }
 
 paper-input #underline {
   background: #c0c0c0;
   border-bottom-color: #c0c0c0;
 }
+
+paper-input::shadow #underline {
+  background: #c0c0c0;
+  border-bottom-color: #c0c0c0;
+}
+
 
 #labelSpan {
   color: #DDD;
@@ -94,7 +99,7 @@ paper-tabs::shadow #selectionBar {
   background-color: #03a9f4;
 }
 
-paper-tabs paper-tab::shadow #ink {
+paper-tabs paper-tab::shadow #ink{
   color: #03a9f4;
 }
 
@@ -103,6 +108,10 @@ paper-item {
 }
 
 @media (min-width: 321px) {
+  core-drawer-panel::shadow #main {
+    left: 0px !important;
+  }
+
   #main {
     left: 0px !important;
   }

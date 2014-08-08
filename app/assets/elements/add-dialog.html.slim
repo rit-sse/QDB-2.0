@@ -1,0 +1,20 @@
+link rel='import' href='/qdb/assets/paper-dialog/paper-dialog.html'
+link rel='import' href='/qdb/assets/paper-input/paper-input.html'
+link rel='import' href='/qdb/assets/paper-button/paper-button.html'
+
+polymer-element name='add-dialog'
+  template
+    paper-dialog#addDialog heading='Add a Quote'
+      paper-input multiline='' label='Enter your quote' floatingLabel=''
+      br
+      paper-input multiline='' label='Enter your additional information' floatingLabel=''
+      br
+      paper-input label='Enter any tags (space delimited)' floatingLabel=''
+      paper-button dismissive='' label='Cancel'
+      paper-button affirmative='' label='Okay'
+  javascript:
+    Polymer('add-dialog', {
+      toggle: function() {
+        this.$.addDialog.toggle();
+      }
+    });

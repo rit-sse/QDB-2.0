@@ -1,7 +1,7 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "polymer": "git://github.com/Polymer/polymer",
+    "polymer": "git://github.com/Polymer/polymer#0.3.5",
     "core-elements": "git://github.com/Polymer/core-elements",
     "paper-elements": "git://github.com/Polymer/paper-elements",
     "roboto-fontface": "latest",

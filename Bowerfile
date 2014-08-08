@@ -1,4 +1,4 @@
-asset 'polymer', github: 'Polymer/polymer'
+asset 'polymer', github: 'Polymer/polymer#0.3.5'
 asset 'core-elements', github: 'Polymer/core-elements'
 asset 'paper-elements', github: 'Polymer/paper-elements'
 asset 'roboto-fontface'

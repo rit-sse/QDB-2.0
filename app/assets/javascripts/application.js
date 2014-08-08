@@ -19,3 +19,47 @@
 //= require ng-polymer-elements/ng-polymer-elements
 //= require qdb
 //= require_tree
+
+function searchToggle() {
+  $('#search').toggle();
+  if(!matches) {
+    $('paper-tabs').toggle();
+  } else {
+    $('#menuicon').toggle();
+  }
+  $('#logo').toggle();
+  $('#createButton').toggle();
+}
+
+function addDialogToggle() {
+  document.querySelector('add-dialog').toggle();
+}
+
+document.addEventListener('polymer-ready', function() {
+  var menuicon = document.getElementById('menuicon');
+  var drawerPanel = document.getElementById('drawerPanel');
+  menuicon.addEventListener('click', function() {
+    drawerPanel.togglePanel();
+  });
+  CoreStyle.g.paperInput.focusedColor='#03a9f4';
+});
+
+document.addEventListener('core-media-change', function(e) {
+  if(e.detail.matches) {
+    $('#tabs').hide();
+    $('#menuicon').show();
+    $('#logo').text('SSE QDB');
+    var drawer = document.querySelector('#drawer') || document.querySelector('core-drawer-panel::shadow #drawer');
+    $(drawer).css('display', 'block');
+    $('core-header-panel[drawer]').css('display', 'block');
+    matches = true
+  } else {
+    $('#tabs').show();
+    $('#logo').text('');
+    $('#menuicon').hide();
+    var drawer = document.querySelector('#drawer') || document.querySelector('core-drawer-panel::shadow #drawer')
+    $(drawer).css('display', 'none');
+    $('core-header-panel[drawer]').css('display', 'none');
+    matches = false
+  }
+});

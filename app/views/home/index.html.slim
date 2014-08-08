@@ -17,46 +17,9 @@ core-drawer-panel#drawerPanel ng-controller='ToolbarController'
         paper-tab Tags
       span#logo flex=''
       paper-icon-button icon='search' onclick='searchToggle()'
-      paper-icon-button#createButton icon='create'
+      paper-icon-button#createButton icon='create' onclick='addDialogToggle()'
       paper-input#search flex='' style='display: none;'
 
     .content
       div ng-view=''
-
-javascript:
-  function searchToggle(){
-    $('#search').toggle();
-    if(!matches) {
-      $('paper-tabs').toggle();
-    } else {
-      $('#menuicon').toggle();
-    }
-    $('#logo').toggle();
-    $('#createButton').toggle();
-
-  }
-
-  document.addEventListener('polymer-ready', function() {
-    var menuicon = document.getElementById('menuicon');
-    var drawerPanel = document.getElementById('drawerPanel');
-    menuicon.addEventListener('click', function() {
-      drawerPanel.togglePanel();
-    });
-  });
-
-  document.addEventListener('core-media-change', function(e){
-    if(e.detail.matches) {
-      $('#tabs').hide();
-      $('#menuicon').show();
-      $('#logo').text('SSE QDB');
-      $('#drawer').css('display', 'block');
-      matches = true
-    } else {
-      $('#tabs').show();
-      $('#logo').text('');
-      $('#menuicon').hide();
-      $('#drawer').css('display', 'none');
-      matches = false
-    }
-  });
-
+add-dialog
