@@ -1,22 +1,62 @@
-core-header-panel mode='waterfall' ng-controller='ToolbarController'
-  core-toolbar
-    span#logo flex=''
-    paper-tabs.fit flex='' ng-model='selected'
-      paper-tab
-        h2 SSE QDB
-      paper-tab Quotes
-      paper-tab Tags
-    paper-icon-button icon='search' onclick='searchToggle()'
-    paper-icon-button#createButton icon='create'
-    paper-input#search flex='' style='display: none'
+core-media-query query="only screen and (max-width: 320px)"
+core-drawer-panel#drawerPanel ng-controller='ToolbarController'
+  core-header-panel drawer=''
+    core-toolbar
+      span Menu
+    core-menu
+      paper-item label='Home' ng-click='goTo("/")'
+      paper-item label='Quotes' ng-click='goTo("quotes")'
+      paper-item label='Tags' ng-click='goTo("tab")'
+  core-header-panel mode='waterfall' main=''
+    core-toolbar
+      paper-icon-button#menuicon icon='menu'
+      paper-tabs#tabs flex='' ng-model='selected' nobar=''
+        paper-tab
+          h2 SSE QDB
+        paper-tab Quotes
+        paper-tab Tags
+      span#logo flex=''
+      paper-icon-button icon='search' onclick='searchToggle()'
+      paper-icon-button#createButton icon='create'
+      paper-input#search flex='' style='display: none;'
 
-  .content
-    div ng-view=''
+    .content
+      div ng-view=''
 
 javascript:
   function searchToggle(){
     $('#search').toggle();
+    if(!matches) {
+      $('paper-tabs').toggle();
+    } else {
+      $('#menuicon').toggle();
+    }
     $('#logo').toggle();
     $('#createButton').toggle();
-    $('paper-tabs').toggle();
+
   }
+
+  document.addEventListener('polymer-ready', function() {
+    var menuicon = document.getElementById('menuicon');
+    var drawerPanel = document.getElementById('drawerPanel');
+    menuicon.addEventListener('click', function() {
+      drawerPanel.togglePanel();
+    });
+  });
+
+  document.addEventListener('core-media-change', function(e){
+    if(e.detail.matches) {
+      $('#tabs').hide();
+      $('#menuicon').show();
+      $('#logo').text('SSE QDB');
+      $('#drawer').css('display', 'block');
+      matches = true
+    } else {
+      $('#tabs').show();
+      $('#logo').text('');
+      $('#menuicon').hide();
+      $('#drawer').css('display', 'none');
+      matches = false
+    }
+  });
+

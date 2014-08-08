@@ -32,7 +32,6 @@ core-toolbar {
 }
 
 #mainPanel {
-  padding: 0 20px;
   background: #fff;
 }
 
@@ -63,10 +62,10 @@ a#logo {
 
 paper-tabs {
   max-width: 275px;
-  height: 64px;
+  height: 100%;
 }
 
-.card {
+.content-home {
   text-align: center;
   margin-top: 50px;
 }
@@ -76,7 +75,7 @@ paper-tabs {
   paper-tabs {
     max-width: 400px;
   }
-  .card {
+  .content-home {
     margin: 50px;
     padding: 50px;
     padding-top: 0px;
@@ -89,4 +88,40 @@ paper-tabs #tabsContainer #selectionBar {
 
 paper-tabs paper-tab #tabContainer #ink {
   color: #03a9f4;
+}
+
+paper-tabs::shadow #selectionBar {
+  background-color: #03a9f4;
+}
+
+paper-tabs paper-tab::shadow #ink {
+  color: #03a9f4;
+}
+
+paper-item {
+  color: #03a9f4;
+}
+
+@media (min-width: 321px) {
+  #main {
+    left: 0px !important;
+  }
+}
+
+@media only screen and (max-width : 320px) {
+  img {
+    height: 125px;
+  }
+}
+
+paper-tabs {
+  margin: 0px !important;
+}
+
+#topBar {
+  padding: 0px !important;
+}
+
+#logo {
+  text-align: center;
 }
