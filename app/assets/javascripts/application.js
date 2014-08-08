@@ -49,7 +49,12 @@ document.addEventListener('core-media-change', function(e) {
     $('#tabs').hide();
     $('#menuicon').show();
     $('#logo').text('SSE QDB');
-    var drawer = document.querySelector('#drawer') || document.querySelector('core-drawer-panel::shadow #drawer');
+    var drawer;
+    try{
+      drawer = document.querySelector('core-drawer-panel::shadow #drawer');
+    } catch(err) {
+      drawer = document.querySelector('#drawer')
+    }
     $(drawer).css('display', 'block');
     $('core-header-panel[drawer]').css('display', 'block');
     matches = true
@@ -57,7 +62,12 @@ document.addEventListener('core-media-change', function(e) {
     $('#tabs').show();
     $('#logo').text('');
     $('#menuicon').hide();
-    var drawer = document.querySelector('#drawer') || document.querySelector('core-drawer-panel::shadow #drawer')
+    var drawer;
+    try{
+      drawer = document.querySelector('core-drawer-panel::shadow #drawer');
+    } catch(err) {
+      drawer = document.querySelector('#drawer')
+    }
     $(drawer).css('display', 'none');
     $('core-header-panel[drawer]').css('display', 'none');
     matches = false
