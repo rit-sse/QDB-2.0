@@ -5,7 +5,7 @@
     "core-elements": "git://github.com/Polymer/core-elements",
     "paper-elements": "git://github.com/Polymer/paper-elements",
     "roboto-fontface": "latest",
-    "angular-route": "latest",
-    "ng-polymer-elements": "latest"
+    "ng-polymer-elements": "latest",
+    "angular-ui-router": "latest"
   }
 }

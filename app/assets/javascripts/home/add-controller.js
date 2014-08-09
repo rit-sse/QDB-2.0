@@ -9,7 +9,7 @@ angular.module('QDB').controller('AddController', ['$scope', '$http',
         tags: $scope.tags
       }
       var notice = document.querySelector('#notification')
-      $http.post('/qdb/quotes.json', request)
+      $http.post('/qdb/api/quotes.json', request)
         .success(function(){
           notice.text = 'Succesfully submitted quote!';
           notice.show();

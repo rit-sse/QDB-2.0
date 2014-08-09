@@ -4,24 +4,24 @@ core-drawer-panel#drawerPanel ng-controller='ToolbarController'
     core-toolbar
       span Menu
     core-menu
-      paper-item label='Home' ng-click='goTo("/")'
-      paper-item label='Quotes' ng-click='goTo("quotes")'
-      paper-item label='Tags' ng-click='goTo("tab")'
+      paper-item label='Home' ng-click='goTo("qdb.index")'
+      paper-item label='Quotes' ng-click='goTo("qdb.quotes.index")'
+      paper-item label='Tags' ng-click='goTo("qdb.tags.index")'
   core-header-panel mode='waterfall' main=''
     core-toolbar
       paper-icon-button#menuicon icon='menu'
-      paper-tabs#tabs flex='' ng-model='selected' nobar=''
-        paper-tab
+      paper-tabs#tabs flex='' nobar=''
+        paper-tab ng-click='goTo("qdb.index")'
           h2 SSE QDB
-        paper-tab Quotes
-        paper-tab Tags
+        paper-tab ng-click='goTo("qdb.quotes.index")' Quotes
+        paper-tab ng-click='goTo("qdb.tags.index")' Tags
       span#logo flex=''
       paper-icon-button icon='search' onclick='searchToggle()'
       paper-icon-button#createButton icon='create' onclick='addDialogToggle()'
       paper-input#search.none flex=''
 
     .content
-      div ng-view=''
+      div ui-view=''
 paper-dialog#addDialog heading='Add a Quote' ng-controller='AddController'
   paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='quote.body'
   br

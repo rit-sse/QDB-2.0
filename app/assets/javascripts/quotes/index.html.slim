@@ -3,7 +3,7 @@
     | {{title}}
   hr
 #quotes-list
-  div ng-repeat='quote in quotes'
+  div ng-repeat='quote in quotes track by $index'
     .quote
       span
         paper-shadow
@@ -15,7 +15,7 @@
       p.small
         | {{quote.description}}
       hr
-      span ng-repeat='tag in quote.tags'
+      span ng-repeat='tag in quote.tags track by $index'
         paper-button.tag label='{{tag.name}}' ng-click='goToTag(tag.name)'
     br
 

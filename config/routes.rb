@@ -1,18 +1,20 @@
 Rails.application.routes.draw do
 
-  resources :quotes, except: [:new, :edit] do
-    member do
-      post 'approve'
-      post 'deny'
+  scope '/api' do
+    resources :quotes, except: [:new, :edit] do
+      member do
+        post 'approve'
+        post 'deny'
+      end
     end
+
+    resources :tags, only: [:index]
+
+    get '/admin/quotes' => 'quotes#admin_index'
+    post '/authorize' => 'auth#authorize'
+    post '/logout' => 'auth#logout'
   end
 
-  resources :tags, only: [:index]
-
-  get '/admin/quotes' => 'quotes#admin_index'
-
+  get '/*path' => redirect('/qdb/?goTo=%{path}')
   root 'home#index'
-
-  post '/authorize' => 'auth#authorize'
-  post '/logout' => 'auth#logout'
 end
