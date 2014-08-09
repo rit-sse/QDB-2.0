@@ -6,7 +6,7 @@ class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = apply_scopes(Quote).approved
+    @quotes = apply_scopes(Quote).all
   end
 
   def admin_index

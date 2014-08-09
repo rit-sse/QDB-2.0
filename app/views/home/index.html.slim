@@ -23,9 +23,9 @@ core-drawer-panel#drawerPanel ng-controller='ToolbarController'
     .content
       div ng-view=''
 paper-dialog#addDialog heading='Add a Quote' ng-controller='AddController'
-  paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='request.body'
+  paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='quote.body'
   br
-  paper-input multiline='' label='Enter additional information' floatingLabel='' ng-model='request.description'
+  paper-input multiline='' label='Enter additional information' floatingLabel='' ng-model='quote.description'
   br
   paper-input multiline='' label='Enter any tags (space delimited)' floatingLabel='' ng-model='tags'
   br

@@ -18,6 +18,7 @@
 //= require angular-route/angular-route
 //= require ng-polymer-elements/ng-polymer-elements
 //= require qdb
+//= require quotes/quotes
 //= require_tree
 
 function searchToggle() {
