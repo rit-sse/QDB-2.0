@@ -6,5 +6,12 @@ angular.module('QDB').controller('ToolbarController', ['$scope', '$state',
       $state.go(state);
       document.getElementById('drawerPanel').togglePanel();
     }
+
+    $scope.search = '';
+
+    document.addEventListener('change', function(event) {
+      $state.go('qdb.quotes.search', { query: $scope.search });
+      searchToggle();
+    });
   }
 ]);

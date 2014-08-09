@@ -6,6 +6,7 @@
     "paper-elements": "git://github.com/Polymer/paper-elements",
     "roboto-fontface": "latest",
     "ng-polymer-elements": "latest",
-    "angular-ui-router": "latest"
+    "angular-ui-router": "latest",
+    "angular-ui-utils": "latest"
   }
 }

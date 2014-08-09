@@ -2,11 +2,12 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy, :approve, :deny]
   before_action :authenticate, except: [:index, :show, :create]
   has_scope :by_tag
+  has_scope :search
 
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = apply_scopes(Quote).all
+    @quotes = apply_scopes(Quote).approved
   end
 
   def admin_index

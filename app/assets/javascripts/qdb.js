@@ -1,12 +1,11 @@
 angular.module('QDB',
   ['ui.router',
-  'ng-polymer-elements',])
+  'ng-polymer-elements'])
   .config(['$stateProvider', '$httpProvider', '$locationProvider', '$urlRouterProvider',
     function($stateProvider, $httpProvider, $locationProvider, $urlRouterProvider){
     authToken = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
     $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
     $locationProvider.html5Mode(true);
-    // var urlMatcher = $urlMatcherFactory.compile("/qdb/?goTo");
     $urlRouterProvider.when('/qdb/?goTo', ['$location', '$match', function($location, $match) {
       $location.url('/qdb/' + $match.goTo);
     }]);
@@ -29,6 +28,11 @@ angular.module('QDB',
       url: '',
       templateUrl: '/qdb/assets/quotes/index.html',
       controller: 'QuotesIndexController'
+    })
+    .state('qdb.quotes.search', {
+      url: '/search?query',
+      templateUrl: '/qdb/assets/quotes/index.html',
+      controller: 'QuotesSearchController'
     })
     .state('qdb.tags', {
       url: '/tags',
