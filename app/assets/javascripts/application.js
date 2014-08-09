@@ -32,7 +32,7 @@ function searchToggle() {
 }
 
 function addDialogToggle() {
-  document.querySelector('add-dialog').toggle();
+  document.querySelector('#addDialog').toggle();
 }
 
 document.addEventListener('polymer-ready', function() {
@@ -74,3 +74,12 @@ document.addEventListener('core-media-change', function(e) {
     matches = false
   }
 });
+
+function fireAdd() {
+  document.querySelector('#addDialog').fire('add-submitted')
+  dissmiss();
+}
+
+function dissmiss() {
+  document.querySelector('#addDialog').toggle();
+}
