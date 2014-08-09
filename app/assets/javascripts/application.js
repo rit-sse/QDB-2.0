@@ -51,9 +51,9 @@ document.addEventListener('core-media-change', function(e) {
     $('#logo').text('SSE QDB');
     try{
       var drawer = document.querySelector('core-drawer-panel::shadow #drawer');
-      $(drawer).css('display', 'none');
+      $(drawer).css('display', 'block');
     } catch(err) {
-      $('#drawer').css('display', 'none');
+      $('#drawer').css('display', 'block');
     }
     $('core-header-panel[drawer]').css('display', 'block');
     matches = true
