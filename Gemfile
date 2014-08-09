@@ -46,6 +46,8 @@ gem 'has_scope'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'will_paginate'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
