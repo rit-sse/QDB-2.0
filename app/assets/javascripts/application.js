@@ -21,14 +21,14 @@
 //= require_tree
 
 function searchToggle() {
-  $('#search').toggle();
+  document.querySelector('#search').classList.toggle('none');
   if(!matches) {
-    $('paper-tabs').toggle();
+    document.querySelector('paper-tabs').classList.toggle('none');
   } else {
-    $('#menuicon').toggle();
+    document.querySelector('#menuicon').classList.toggle('none');
   }
-  $('#logo').toggle();
-  $('#createButton').toggle();
+  document.querySelector('#logo').classList.toggle('none');
+  document.querySelector('#createButton').classList.toggle('none');
 }
 
 function addDialogToggle() {
@@ -45,29 +45,32 @@ document.addEventListener('polymer-ready', function() {
 });
 
 document.addEventListener('core-media-change', function(e) {
+  if(!document.querySelector('#search').classList.contains('none')){
+    searchToggle();
+  }
   if(e.detail.matches) {
-    $('#tabs').hide();
-    $('#menuicon').show();
-    $('#logo').text('SSE QDB');
+    document.querySelector('#tabs').classList.add('none');
+    document.querySelector('#menuicon').classList.remove('none');
+    document.querySelector('#logo').innerHTML = 'SSE QDB';
     try{
       var drawer = document.querySelector('core-drawer-panel::shadow #drawer');
-      $(drawer).css('display', 'block');
+      drawer.classList.remove('none');
     } catch(err) {
-      $('#drawer').css('display', 'block');
+      document.querySelector('core-drawer-panel').$.drawer.classList.remove('none');
     }
-    $('core-header-panel[drawer]').css('display', 'block');
+    document.querySelector('core-header-panel[drawer]').classList.remove('none');
     matches = true
   } else {
-    $('#tabs').show();
-    $('#logo').text('');
-    $('#menuicon').hide();
+    document.querySelector('#tabs').classList.remove('none');
+    document.querySelector('#logo').innerHTML = '';
+    document.querySelector('#menuicon').classList.add('none');
     try{
       var drawer = document.querySelector('core-drawer-panel::shadow #drawer');
-      $(drawer).css('display', 'none');
+      drawer.classList.add('none');
     } catch(err) {
-      $('#drawer').css('display', 'none');
+       document.querySelector('core-drawer-panel').$.drawer.classList.add('none');
     }
-    $('core-header-panel[drawer]').css('display', 'none');
+    document.querySelector('core-header-panel[drawer]').classList.add('none');
     matches = false
   }
 });

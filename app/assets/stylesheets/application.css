@@ -134,3 +134,7 @@ paper-tabs {
 #logo {
   text-align: center;
 }
+
+.none {
+  display: none;
+}
