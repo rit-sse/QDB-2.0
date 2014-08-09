@@ -24,10 +24,10 @@ protected
     true unless current_user.nil?
   end
 
-  def authenticate!
+  def authenticate
     unless current_user
       respond_to do |format|
-        format.json { render json:  'Insufficient Privileges' status: :unauthorized}
+        format.json { render json:  'Insufficient Privileges', status: :unauthorized}
       end
     end
   end
