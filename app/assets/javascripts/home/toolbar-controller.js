@@ -1,6 +1,6 @@
 angular.module('QDB').controller('ToolbarController', ['$scope', '$location',
   function($scope, $location){
-    var tabs = ['/', 'quotes', 'tabs'];
+    var tabs = ['/', 'quotes', 'tags'];
     $scope.selected = 0
 
     $scope.$watch('selected', function(newValue, oldValue) {

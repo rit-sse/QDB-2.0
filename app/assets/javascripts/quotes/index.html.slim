@@ -16,6 +16,6 @@
         | {{quote.description}}
       hr
       span ng-repeat='tag in quote.tags'
-        paper-button.tag label='{{tag.name}}'
+        paper-button.tag label='{{tag.name}}' ng-click='goToTag(tag.name)'
     br
 

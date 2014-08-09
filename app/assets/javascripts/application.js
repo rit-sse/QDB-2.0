@@ -78,9 +78,9 @@ document.addEventListener('core-media-change', function(e) {
 
 function fireAdd() {
   document.querySelector('#addDialog').fire('add-submitted')
-  dissmiss();
+  dismiss();
 }
 
-function dissmiss() {
+function dismiss() {
   document.querySelector('#addDialog').toggle();
 }
