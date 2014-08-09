@@ -55,7 +55,7 @@ document.addEventListener('core-media-change', function(e) {
     document.querySelector('#logo').innerHTML = 'SSE QDB';
     try{
       var drawer = document.querySelector('core-drawer-panel::shadow #drawer');
-      drawer.classList.remove('none');
+      $(drawer).show();
     } catch(err) {
       document.querySelector('core-drawer-panel').$.drawer.classList.remove('none');
     }
@@ -67,7 +67,7 @@ document.addEventListener('core-media-change', function(e) {
     document.querySelector('#menuicon').classList.add('none');
     try{
       var drawer = document.querySelector('core-drawer-panel::shadow #drawer');
-      drawer.classList.add('none');
+      $(drawer).hide();
     } catch(err) {
        document.querySelector('core-drawer-panel').$.drawer.classList.add('none');
     }

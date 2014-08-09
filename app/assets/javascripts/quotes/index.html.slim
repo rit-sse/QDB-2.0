@@ -2,17 +2,20 @@
   h2
     | {{title}}
   hr
-#quotes-list ng-repeat='quote in quotes'
-  .quote
-    paper-shadow
-    h3
-      | {{quote.id}}
-    blockquote
-      p
-        | {{quote.body}}
-    p.small
-      | {{quote.description}}
-    hr
-    span ng-repeat='tag in quote.tags'
-      paper-button.tag label='{{tag.name}}'
-  br
+#quotes-list
+  div ng-repeat='quote in quotes'
+    .quote
+      span
+        paper-shadow
+      h3
+        | {{quote.id}}
+      blockquote
+        p
+          | {{quote.body}}
+      p.small
+        | {{quote.description}}
+      hr
+      span ng-repeat='tag in quote.tags'
+        paper-button.tag label='{{tag.name}}'
+    br
+
