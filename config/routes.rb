@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get '/admin/quotes' => 'quotes#admin_index'
 
   root 'home#index'
+
+  post '/authorize' => 'auth#authorize'
+  post '/logout' => 'auth#logout'
 end
