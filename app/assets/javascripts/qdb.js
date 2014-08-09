@@ -40,6 +40,18 @@ angular.module('QDB',
       template: '<div ui-view />'
     })
     .state('qdb.tags.index', {
-      url: ''
+      url: '',
+      templateUrl: '/qdb/assets/tags/index.html',
+      controller: 'TagsIndexController'
+    })
+    .state('qdb.tags.show', {
+      url: '/:tag',
+      templateUrl: '/qdb/assets/quotes/index.html',
+      controller: 'TagsShowController'
     });
-  }]);
+  }])
+  .run(function($rootScope, $state){
+    $rootScope.goToTag = function(tag) {
+      $state.go('qdb.tags.show', {tag: tag});
+    }
+  });

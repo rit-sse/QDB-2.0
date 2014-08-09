@@ -188,3 +188,16 @@ blockquote p {
 .small {
   font-size: 13px;
 }
+
+#tags-list{
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+paper-button.colored-tag {
+  background-color: #03a9f4;
+  color: #fff;
+  margin: 5px;
+  font-size: 10px;
+}

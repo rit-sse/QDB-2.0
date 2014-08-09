@@ -4,9 +4,5 @@ angular.module('QDB').controller('QuotesIndexController',
       $scope.quotes = data;
     });
     $scope.title = 'Quotes';
-
-    $scope.goToTag = function(tag) {
-      $location.path('tags/' + tag);
-    }
   }]
 );

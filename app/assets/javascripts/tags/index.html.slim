@@ -1,0 +1,7 @@
+.title
+  h2 Tags
+  hr
+
+#tags-list
+  span ng-repeat='tag in tags'
+    paper-button.colored-tag raisedButton='' label='{{tag.name}}' ng-click='goToTag(tag.name)'
