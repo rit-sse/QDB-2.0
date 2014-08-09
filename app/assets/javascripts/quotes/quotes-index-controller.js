@@ -3,5 +3,6 @@ angular.module('quotes').controller('QuotesIndexController',
     $http.get('/qdb/quotes.json').success(function(data){
       $scope.quotes = data;
     });
+    $scope.title = 'Quotes';
   }]
 );
