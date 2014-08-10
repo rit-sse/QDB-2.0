@@ -1,4 +1,4 @@
-angular.module('QDB').controller('QuotesSearchController',
+angular.module('quotes').controller('QuotesSearchController',
   ['$scope', '$http', '$location', '$stateParams',
   function($scope, $http, $location, $stateParams){
     $http.get('/qdb/api/quotes.json?search=' + $stateParams.query)

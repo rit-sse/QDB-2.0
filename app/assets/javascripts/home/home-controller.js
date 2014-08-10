@@ -1,11 +1,11 @@
 angular.module('QDB').controller('HomeController', ['$rootScope',
   function($rootScope){
     document.addEventListener('polymer-ready', function(){
-      if($rootScope.notLoggedIn){
+      if($rootScope.message){
         var notice = document.querySelector('#notification');
-        notice.text = 'You need to be logged in to do that.'
+        notice.text = $rootScope.message;
         notice.show();
-        $rootScope.notLoggedIn = '';
+        $rootScope.message = '';
       }
     });
   }

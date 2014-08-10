@@ -1,0 +1,39 @@
+angular.module('admin', ['ui.router'])
+  .config(['$stateProvider', function($stateProvider) {
+    var checkLoggedin = function($q, $timeout, $http, $state, $rootScope){
+      var deferred = $q.defer();
+      $http.get('/qdb/api/logged_in.json').success(function(user){
+        if (user.signed_in){
+          $timeout(deferred.resolve, 0);
+        }
+        else {
+          $rootScope.message = 'You need to be logged in to view that';
+          $timeout(function(){deferred.reject();}, 0);
+          $state.go('qdb.index');
+        }
+      });
+    }
+    $stateProvider
+    .state('qdb.admin', {
+      url: '/admin',
+      abstract: true,
+      template: '<div ui-view />'
+    })
+    .state('qdb.admin.login', {
+      url: '/login',
+      templateUrl: '/qdb/assets/admin/login.html',
+      controller: 'LoginController'
+    })
+    .state('qdb.admin.logout',{
+      url: '/logout',
+      controller: 'LogoutController'
+    })
+    .state('qdb.admin.index', {
+      url: '',
+      templateUrl: '/qdb/assets/admin/index.html',
+      controller: 'AdminIndexController',
+      resolve: {
+        loggedIn: checkLoggedin
+      }
+    })
+  }]);

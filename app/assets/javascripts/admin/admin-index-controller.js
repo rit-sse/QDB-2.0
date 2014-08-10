@@ -1,4 +1,4 @@
-angular.module('QDB').controller('AdminIndexController', ['$scope', '$http', function($scope, $http){
+angular.module('admin').controller('AdminIndexController', ['$scope', '$http', function($scope, $http){
   $http.get('/qdb/api/admin/quotes.json').success(function(data){
     $scope.quotes = data;
   });

@@ -1,4 +1,4 @@
-angular.module('QDB').controller('TagsShowController',
+angular.module('tags').controller('TagsShowController',
   ['$scope', '$http', '$location', '$stateParams',
   function($scope, $http, $location, $stateParams){
     $http.get('/qdb/api/quotes.json?by_tag=' + $stateParams.tag)

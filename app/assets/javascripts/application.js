@@ -18,6 +18,9 @@
 //= require ng-polymer-elements/ng-polymer-elements
 //= require angular-ui-router/release/angular-ui-router
 //= require qdb
+//= require tags/tags
+//= require quotes/quotes
+//= require admin/admin
 //= require_tree
 
 function searchToggle() {
