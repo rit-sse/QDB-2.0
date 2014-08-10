@@ -28,10 +28,10 @@ angular.module('QDB',
     })
   }])
   .run(function($rootScope, $state){
-    $rootScope.goToTag = function(tag) {
-      $state.go('qdb.tags.show', {tag: tag});
-    }
     document.addEventListener('tag-clicked', function(event){
-      $rootScope.goToTag(event.detail.name);
+      $state.go('qdb.tags.show', {tag: event.detail.name});
+    });
+    document.addEventListener('quote-clicked', function(event){
+      $state.go('qdb.quotes.show', {id: event.detail.id});
     });
   });

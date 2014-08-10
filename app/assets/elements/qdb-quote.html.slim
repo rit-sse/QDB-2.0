@@ -35,11 +35,19 @@ polymer-element name='qdb-quote' attributes='quote index admin'
         display: inline;
       }
 
+      a {
+        text-decoration: none;
+      }
+
+      .colored {
+        color: #03a9f4;
+      }
+
     .quote
       span
         paper-shadow
-      h3
-        | {{quoteObj.id}}
+      paper-button.colored on-click='{{goTo}}' label='{{quoteObj.id}}'
+      br
       blockquote
         p
           | {{quoteObj.body}}
@@ -62,10 +70,12 @@ polymer-element name='qdb-quote' attributes='quote index admin'
         this.fire('quote-approve', {id: this.quoteObj.id, index: this.index});
       },
       edit: function(){
-        console.log('here')
         this.fire('quote-edit', {id: this.quoteObj.id});
       },
       deny: function(){
         this.fire('quote-deny', {id: this.quoteObj.id, index: this.index});
+      },
+      goTo: function() {
+        this.fire('quote-clicked', {id: this.quoteObj.id });
       }
     });

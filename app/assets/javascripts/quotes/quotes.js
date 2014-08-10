@@ -15,5 +15,10 @@ angular.module('quotes', ['ui.router'])
       url: '/search?query',
       templateUrl: '/qdb/assets/quotes/index.html',
       controller: 'QuotesSearchController'
+    })
+    .state('qdb.quotes.show', {
+      url: '/:id',
+      templateUrl: '/qdb/assets/quotes/show.html',
+      controller: 'QuotesShowController'
     });
   }]);
