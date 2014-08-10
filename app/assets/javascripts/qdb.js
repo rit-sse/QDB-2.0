@@ -10,18 +10,16 @@ angular.module('QDB',
       // Initialize a new promise
       var deferred = $q.defer();
       // Make an AJAX call to check if the user is logged in
-      $http.get('/logged_in').success(function(user){
+      $http.get('/qdb/api/logged_in.json').success(function(user){
         // Authenticated
-        if (user !== '0'){
+        if (user.signed_in){
           $timeout(deferred.resolve, 0);
         }
         // Not Authenticated
         else {
-          var notice = document.querySelector('#notification');
-          notice.text = 'You need to be logged in to view that';
+          $rootScope.notLoggedIn = 'You need to be logged in to view that';
           $timeout(function(){deferred.reject();}, 0);
           $state.go('qdb.index');
-          notice.show();
         }
       });
     }
@@ -43,9 +41,23 @@ angular.module('QDB',
       templateUrl: '/qdb/assets/admin/login.html',
       controller: 'LoginController'
     })
+    .state('qdb.admin', {
+      url: '/admin',
+      abstract: true,
+      template: '<div ui-view />'
+    })
+    .state('qdb.admin.index', {
+      url: '',
+      templateUrl: '/qdb/assets/admin/index.html',
+      controller: 'IndexController',
+      resolve: {
+        loggedIn: checkLoggedin
+      }
+    })
     .state('qdb.index', {
       url: '',
-      templateUrl: '/qdb/assets/home/home.html'
+      templateUrl: '/qdb/assets/home/home.html',
+      controller: 'HomeController'
     })
     .state('qdb.quotes', {
       url: '/quotes',

@@ -52,7 +52,7 @@ class AuthController < ApplicationController
       if signed_in?
         format.json { render json: { signed_in: true }, status: :ok }
       else
-        format.json { render json: { signed_in: true }, status: :ok }
+        format.json { render json: { signed_in: false }, status: :ok }
       end
     end
   end
