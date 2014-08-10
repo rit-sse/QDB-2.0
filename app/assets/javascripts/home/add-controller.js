@@ -3,7 +3,11 @@ angular.module('QDB').controller('AddController', ['$scope', '$http',
 
     $scope.quote = {}
 
-    document.addEventListener('add-submitted', function() {
+    $scope.cancel = function() {
+      document.querySelector('#addDialog').toggle();
+    }
+
+    $scope.submit = function() {
       var request = {
         quote: $scope.quote,
         tags: $scope.tags
@@ -13,10 +17,11 @@ angular.module('QDB').controller('AddController', ['$scope', '$http',
         .success(function(){
           notice.text = 'Succesfully submitted quote!';
           notice.show();
+          document.querySelector('#addDialog').toggle();
         }).error(function(){
           notice.text = 'There was a problem submitting your quote.'
           notice.show();
         });
-    });
+    }
   }
 ]);

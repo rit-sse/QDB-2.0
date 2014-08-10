@@ -8,6 +8,6 @@
     "ng-polymer-elements": "latest",
     "angular-ui-router": "latest",
     "angular": "latest",
-    "angular-http-auth": "latest"
+    "underscore": "latest"
   }
 }

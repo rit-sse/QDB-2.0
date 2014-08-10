@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require underscore/underscore
 //= require angular/angular
 //= require ng-polymer-elements/ng-polymer-elements
 //= require angular-ui-router/release/angular-ui-router
@@ -83,14 +84,3 @@ document.addEventListener('core-media-change', function(e) {
     matches = false
   }
 });
-
-function fireAdd() {
-  document.querySelector('#addDialog').fire('add-submitted')
-  dismiss();
-}
-
-function dismiss() {
-  document.querySelector('#addDialog').toggle();
-}
-
-

@@ -1,6 +1,6 @@
 angular.module('admin', ['ui.router'])
   .config(['$stateProvider', function($stateProvider) {
-    var checkLoggedin = function($q, $timeout, $http, $state, $rootScope){
+    var checkLoggedIn = function($q, $timeout, $http, $state, $rootScope){
       var deferred = $q.defer();
       $http.get('/qdb/api/logged_in.json').success(function(user){
         if (user.signed_in){
@@ -33,7 +33,15 @@ angular.module('admin', ['ui.router'])
       templateUrl: '/qdb/assets/admin/index.html',
       controller: 'AdminIndexController',
       resolve: {
-        loggedIn: checkLoggedin
+        loggedIn: checkLoggedIn
       }
     })
+    .state('qdb.admin.edit', {
+      url: '/quotes/:id/edit',
+      templateUrl: '/qdb/assets/admin/edit.html',
+      controller: 'AdminQuoteEditController',
+      resolve: {
+        loggedIn: checkLoggedIn
+      }
+    });
   }]);

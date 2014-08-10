@@ -37,6 +37,7 @@ class QuotesController < ApplicationController
   # PATCH/PUT /quotes/1
   # PATCH/PUT /quotes/1.json
   def update
+    @quote.tag_list = params[:tags]
     respond_to do |format|
       if @quote.update(quote_params)
         format.json { render :show, status: :ok, location: @quote }
