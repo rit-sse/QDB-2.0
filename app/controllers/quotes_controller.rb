@@ -8,6 +8,10 @@ class QuotesController < ApplicationController
   # GET /quotes.json
   def index
     @quotes = apply_scopes(Quote).approved
+    respond_to do |format|
+      format.json
+      format.rss {render :layout => false}
+    end
   end
 
   def admin_index
