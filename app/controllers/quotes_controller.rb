@@ -59,7 +59,7 @@ class QuotesController < ApplicationController
   def approve
     @quote.approved = true
     respond_to do |format|
-      if @quote.update(quote_params)
+      if @quote.save
         format.json { render :show, status: :ok, location: @quote }
       else
         format.json { render json: @quote.errors, status: :unprocessable_entity }
@@ -70,7 +70,7 @@ class QuotesController < ApplicationController
   def deny
     @quote.approved = false
     respond_to do |format|
-      if @quote.update(quote_params)
+      if @quote.save
         format.json { render :show, status: :ok, location: @quote }
       else
         format.json { render json: @quote.errors, status: :unprocessable_entity }

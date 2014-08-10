@@ -16,8 +16,8 @@
       span ng-repeat='tag in quote.tags track by $index'
         paper-button.tag label='{{tag.name}}' ng-click='goToTag(tag.name)'
       div style='float: right;'
-        paper-icon-button icon='check'
-        paper-icon-button icon='create'
-        paper-icon-button icon='delete'
+        paper-icon-button icon='check' ng-click='approve(quote.id, $index)'
+        paper-icon-button icon='create' ng-click='edit(quote.id)'
+        paper-icon-button icon='delete' ng-click='deny(quote.id, $index)'
     br
 

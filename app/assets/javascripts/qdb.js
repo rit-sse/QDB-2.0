@@ -49,7 +49,7 @@ angular.module('QDB',
     .state('qdb.admin.index', {
       url: '',
       templateUrl: '/qdb/assets/admin/index.html',
-      controller: 'IndexController',
+      controller: 'AdminIndexController',
       resolve: {
         loggedIn: checkLoggedin
       }
