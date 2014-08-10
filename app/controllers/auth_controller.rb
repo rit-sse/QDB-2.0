@@ -5,8 +5,9 @@ class AuthController < ApplicationController
       params[:password] == "admin"
 
       set_current_user "admin", "admin"
-
-      redirect_to admin_events_path, notice:"Logged in successfully."
+      respond_to do |format|
+        format.json { render json: current_user, status: :ok}
+      end
     else
       username = params[:username]
       username = username[/\A\w+/].downcase
@@ -31,11 +32,9 @@ class AuthController < ApplicationController
           role = "admin"
 
           set_current_user username, role
-          format.json { render json: current_user}
-        elsif ldap.bind
-          error_notice = "Insufficient Privileges"
+          format.json { render json: current_user, status: :ok}
         else
-          error_notice = "Error: #{ldap.get_operation_result.message}"
+          format.json { render json:  { notice: 'Insufficient Privileges'} , status: :unauthorized}
         end
       end
     end
@@ -43,6 +42,19 @@ class AuthController < ApplicationController
 
   def logout
     reset_session
-    redirect_to root_path, notice: "Signed out successfully."
+    respond_to do |format|
+      format.json { render json: {notice: 'Signed Out Successfully'}, status: :ok}
+    end
   end
+
+  def logged_in
+    respond_to do |format|
+      if signed_in?
+        format.json { render json: { signed_in: true }, status: :ok }
+      else
+        format.json { render json: { signed_in: true }, status: :ok }
+      end
+    end
+  end
+
 end

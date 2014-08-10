@@ -31,7 +31,7 @@ core-toolbar {
   color: #fff;
 }
 
-paper-input::shadow input {
+#search::shadow input {
   color: #fff;
 }
 
@@ -54,7 +54,7 @@ paper-input::shadow #underline {
   color: #DDD;
 }
 
-#inputContainer input {
+#search #inputContainer input {
   color: #fff;
   font-size: 19px
 }
@@ -200,4 +200,10 @@ paper-button.colored-tag {
   color: #fff;
   margin: 5px;
   font-size: 10px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
 }

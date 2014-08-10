@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     get '/admin/quotes' => 'quotes#admin_index'
     post '/authorize' => 'auth#authorize'
+    get '/logged_in' => 'auth#logged_in'
     post '/logout' => 'auth#logout'
   end
 

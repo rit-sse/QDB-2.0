@@ -14,9 +14,9 @@ protected
   end
 
   def set_current_user(username, role)
-    user = User.new username: username, role: role
+    user = { username: username, role: role }
     session[:user] = user
-    Rails.logger.debug "#{role}: #{user.role}"
+    Rails.logger.debug "#{role}: #{user[:role]}"
     @current_user = user
   end
 

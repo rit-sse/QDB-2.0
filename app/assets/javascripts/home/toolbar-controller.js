@@ -9,7 +9,8 @@ angular.module('QDB').controller('ToolbarController', ['$scope', '$state',
 
     $scope.search = '';
 
-    document.addEventListener('change', function(event) {
+    document.addEventListener('enter-pressed', function(event) {
+      console.log(event);
       $state.go('qdb.quotes.search', { query: $scope.search });
       searchToggle();
     });

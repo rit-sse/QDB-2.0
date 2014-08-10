@@ -42,6 +42,12 @@ document.addEventListener('polymer-ready', function() {
     drawerPanel.togglePanel();
   });
   CoreStyle.g.paperInput.focusedColor='#03a9f4';
+  var input = document.querySelector('#search');
+  input.addEventListener('keypress', function(e) {
+    if (e.keyCode === 13) {
+      input.fire('enter-pressed');
+    }
+  });
 });
 
 document.addEventListener('core-media-change', function(e) {
@@ -83,3 +89,5 @@ function fireAdd() {
 function dismiss() {
   document.querySelector('#addDialog').toggle();
 }
+
+
