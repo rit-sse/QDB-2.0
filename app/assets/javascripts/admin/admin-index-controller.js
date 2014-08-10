@@ -4,7 +4,9 @@ angular.module('admin').controller('AdminIndexController', ['$scope', '$http', '
       $scope.quotes = data;
     });
 
-    $scope.approve = function(quote, index) {
+    document.addEventListener('quote-approve', function(event) {
+      var quote = event.detail.id;
+      var index = event.detail.index;
       var notice = document.querySelector('#notification');
       $http.post('/qdb/api/quotes/' + quote + '/approve.json').success(function(){
         notice.text = 'Successfully approved!'
@@ -14,9 +16,11 @@ angular.module('admin').controller('AdminIndexController', ['$scope', '$http', '
         notice.text = 'There was a problem approving the quote.'
         notice.show();
       });
-    }
+    });
 
-    $scope.deny = function(quote, index) {
+    document.addEventListener('quote-deny', function(event) {
+      var quote = event.detail.id;
+      var index = event.detail.index;
       var notice = document.querySelector('#notification');
       $http.post('/qdb/api/quotes/' + quote + '/deny.json').success(function(){
         notice.text = 'Successfully denied!'
@@ -26,10 +30,11 @@ angular.module('admin').controller('AdminIndexController', ['$scope', '$http', '
         notice.text = 'There was a problem denying the quote.'
         notice.show();
       });
-    }
+    });
 
-    $scope.edit = function(id) {
-      $state.go('qdb.admin.edit', {id: id});
-    }
+    document.addEventListener('quote-edit', function(event) {
+      var quote = event.detail.id;
+      $state.go('qdb.admin.edit', {id: quote});
+    });
   }
 ]);

@@ -31,4 +31,7 @@ angular.module('QDB',
     $rootScope.goToTag = function(tag) {
       $state.go('qdb.tags.show', {tag: tag});
     }
+    document.addEventListener('tag-clicked', function(event){
+      $rootScope.goToTag(event.detail.name);
+    });
   });

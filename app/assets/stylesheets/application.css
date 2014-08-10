@@ -143,63 +143,16 @@ paper-tabs {
   margin-top: 50px;
 }
 
-.quote {
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
-  background: #EEE;
-  padding: 40px;
-  position: relative;
-}
-
 .title {
   margin-left: auto;
   margin-right: auto;
   width: 75%;
 }
 
-.quote h3 {
-  margin-top: 0px;
-}
-
-paper-button.tag {
-  color: #03a9f4;
-}
-
-blockquote {
-  border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  white-space: pre;
-}
-
-blockquote:before {
-  color: #ccc;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
-}
-
-blockquote p {
-  display: inline;
-}
-
-.small {
-  font-size: 13px;
-}
-
 #tags-list{
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-}
-
-paper-button.colored-tag {
-  background-color: #03a9f4;
-  color: #fff;
-  margin: 5px;
-  font-size: 10px;
 }
 
 .center {

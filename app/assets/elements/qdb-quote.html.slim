@@ -1,0 +1,71 @@
+link rel='import' href='/qdb/assets/qdb-tag-button.html'
+link rel='import' href='/qdb/assets/paper-icon-button/paper-icon-button.html'
+
+polymer-element name='qdb-quote' attributes='quote index admin'
+  template
+    css:
+      .quote {
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        background: #EEE;
+        padding: 40px;
+        position: relative;
+      }
+      .quote h3 {
+        margin-top: 0px;
+      }
+
+      blockquote {
+        border-left: 10px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        white-space: pre;
+      }
+
+      blockquote:before {
+        color: #ccc;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+      }
+
+      blockquote p {
+        display: inline;
+      }
+
+    .quote
+      span
+        paper-shadow
+      h3
+        | {{quoteObj.id}}
+      blockquote
+        p
+          | {{quoteObj.body}}
+      p.small
+        | {{quoteObj.description}}
+      hr
+      template repeat="{{quoteObj.tags}}"
+        qdb-tag-button name='{{name}}'
+      template if='{{admin}}'
+        div style='float: right;'
+          paper-icon-button icon='check' on-click='{{approve}}'
+          paper-icon-button icon='create' on-click='{{edit}}'
+          paper-icon-button icon='delete' on-click='{{deny}}'
+  javascript:
+    Polymer('qdb-quote', {
+      quoteChanged: function(oldValue, newValue){
+        this.quoteObj = JSON.parse(this.quote);
+      },
+      approve: function(){
+        this.fire('quote-approve', {id: this.quoteObj.id, index: this.index});
+      },
+      edit: function(){
+        console.log('here')
+        this.fire('quote-edit', {id: this.quoteObj.id});
+      },
+      deny: function(){
+        this.fire('quote-deny', {id: this.quoteObj.id, index: this.index});
+      }
+    });
