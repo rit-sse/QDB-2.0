@@ -15,11 +15,11 @@ angular.module('tags').controller('TagsShowController',
     $scope.title = $stateParams.tag;
 
     $scope.goBack = function(){
-      $state.go('qdb.quotes.index', {page: $scope.page-1});
+      $state.go('qdb.tags.show', {page: $scope.page-1, tag: $stateParams.tag});
     }
 
     $scope.goAhead = function(){
-      $state.go('qdb.quotes.index', {page: $scope.page+1});
+      $state.go('qdb.tags.show', {page: $scope.page+1, tag: $stateParams.tag});
     }
   }]
 );

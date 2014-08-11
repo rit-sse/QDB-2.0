@@ -12,7 +12,7 @@ angular.module('quotes', ['ui.router'])
       controller: 'QuotesIndexController'
     })
     .state('qdb.quotes.search', {
-      url: '/search?query',
+      url: '/search?query&page',
       templateUrl: '/qdb/assets/quotes/index.html',
       controller: 'QuotesSearchController'
     })

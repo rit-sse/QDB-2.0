@@ -18,6 +18,12 @@ Rails.application.routes.draw do
 
   get '/quotes.rss' => 'quotes#index', format: :false, defaults: {format: :rss}
 
-  get '/*path' => redirect{ |params, request| "/qdb/?goTo=#{request.params[:path]}&" +  (request.params[:page].nil? ? "" : "page=#{request.params[:page]}") }
+  get '/*path' => redirect { |params, request|
+    path = "/qdb/?goTo=#{request.params[:path]}"
+    page = request.params[:page].nil? ? "" : "&page=#{request.params[:page]}"
+    query = request.params[:query].nil? ? "" : "&query=#{request.params[:query]}"
+    "#{path}#{page}#{query}"
+  }
+
   root 'home#index'
 end

@@ -11,11 +11,17 @@ angular.module('QDB',
 
     $locationProvider.html5Mode(true);
 
-    $urlRouterProvider.when('/qdb/?goTo&page', ['$location', '$match', function($location, $match) {
+    $urlRouterProvider.when('/qdb/?goTo&page&query', ['$location', '$match', function($location, $match) {
       var path = '/qdb/' + $match.goTo;
-      if($match.page){
+      if($match.page && $match.query) {
+        path += '?page=' + $match.page;
+        path += '&query' + $match.query;
+      }else if($match.query) {
+        path += '?query=' + $match.query;
+      }else if($match.page) {
         path += '?page=' + $match.page;
       }
+
       $location.url(path);
     }]);
 
