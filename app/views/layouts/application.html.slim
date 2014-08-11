@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title QDB
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = html_import_tag 'core-header-panel/core-header-panel'
+    = html_import_tag 'core-toolbar/core-toolbar'
+    = html_import_tag 'core-icons/core-icons'
+    = html_import_tag 'core-media-query/core-media-query'
+    = html_import_tag 'core-drawer-panel/core-drawer-panel'
+    = html_import_tag 'paper-icon-button/paper-icon-button'
+    = html_import_tag 'paper-input/paper-input'
+    = html_import_tag 'paper-tabs/paper-tabs'
+    = html_import_tag 'paper-shadow/paper-shadow'
+    = html_import_tag 'paper-item/paper-item'
+    = html_import_tag 'paper-button/paper-button'
+    = html_import_tag 'paper-toast/paper-toast'
+    = html_import_tag 'paper-dialog/paper-dialog'
+    = html_import_tag 'paper-button/paper-button'
+    = html_import_tag 'qdb-quote'
+    = html_import_tag 'qdb-tag-button'
+    = html_import_tag 'qdb-home'
+    meta name="viewport" content="width=device-width"
+  body unresolved='' fullbleed='' touch-action="auto" ng-app='QDB'
+    = yield

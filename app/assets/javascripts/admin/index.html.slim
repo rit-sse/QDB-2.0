@@ -1,0 +1,7 @@
+.title
+  h2 Needs approval
+#quotes-list
+  div ng-repeat='quote in quotes'
+    qdb-quote quote='{{quote}}' index='{{$index}}' admin='true'
+    br
+

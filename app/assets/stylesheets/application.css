@@ -11,5 +11,162 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require roboto-fontface/roboto-fontface.scss
  *= require_self
  */
+body {
+  font-family: 'Roboto', 'sans-serif';
+    background: #fff;
+}
+
+core-header-panel {
+  background: white;
+  /* height: 100% fails here on some browsers */
+  height: 100vh;
+  width: 100vw;
+}
+
+core-toolbar {
+  background: #01579b;
+  color: #fff;
+}
+
+#search::shadow input {
+  color: #fff;
+}
+
+#mainPanel {
+  background: #fff;
+}
+
+paper-input #underline {
+  background: #c0c0c0;
+  border-bottom-color: #c0c0c0;
+}
+
+paper-input::shadow #underline {
+  background: #c0c0c0;
+  border-bottom-color: #c0c0c0;
+}
+
+
+#labelSpan {
+  color: #DDD;
+}
+
+#search #inputContainer input {
+  color: #fff;
+  font-size: 19px
+}
+
+a#logo {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+paper-tabs {
+  max-width: 275px;
+  height: 100%;
+}
+
+.content-home {
+  text-align: center;
+  margin-top: 50px;
+}
+
+
+@media (min-width: 1200px) {
+  paper-tabs {
+    max-width: 400px;
+  }
+  .content-home {
+    margin: 50px;
+    padding: 50px;
+    padding-top: 0px;
+  }
+}
+
+paper-tabs #tabsContainer #selectionBar {
+  background-color: #03a9f4;
+}
+
+paper-tabs paper-tab #tabContainer #ink {
+  color: #03a9f4;
+}
+
+paper-tabs::shadow #selectionBar {
+  background-color: #03a9f4;
+}
+
+paper-tabs paper-tab::shadow #ink{
+  color: #03a9f4;
+}
+
+paper-item {
+  color: #03a9f4;
+}
+
+@media (min-width: 321px) {
+  core-drawer-panel::shadow #main {
+    left: 0px !important;
+  }
+
+  #main {
+    left: 0px !important;
+  }
+}
+
+@media only screen and (max-width : 320px) {
+  img {
+    height: 125px;
+  }
+}
+
+paper-tabs {
+  margin: 0px !important;
+}
+
+#topBar {
+  padding: 0px !important;
+}
+
+#logo {
+  text-align: center;
+}
+
+.none {
+  display: none;
+}
+
+#quotes-list {
+  margin-top: 50px;
+}
+
+.title {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+#tags-list{
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.centered {
+  text-align: center;
+}
+paper-icon-button#left{
+  margin: 20px;
+}
+paper-icon-button#right{
+  margin: 20px;
+}

@@ -1,0 +1,23 @@
+link rel='import' href='/qdb/assets/paper-button/paper-button.html'
+
+polymer-element name='qdb-tag-button' attributes='name'
+  template
+    css:
+      paper-button.colored-tag {
+        background-color: #03a9f4;
+        color: #fff;
+        margin: 5px;
+        font-size: 10px;
+      }
+
+      .small {
+        font-size: 13px;
+      }
+
+    paper-button.colored-tag raisedButton='' label='{{name}}' on-click='{{goToTag}}'
+  javascript:
+    Polymer('qdb-tag-button', {
+      goToTag: function(){
+        this.fire('tag-clicked', {name: this.name});
+      }
+    });
