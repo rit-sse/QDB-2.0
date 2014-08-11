@@ -7,7 +7,7 @@ angular.module('quotes', ['ui.router'])
       template: '<div ui-view />'
     })
     .state('qdb.quotes.index', {
-      url: '',
+      url: '?page',
       templateUrl: '/qdb/assets/quotes/index.html',
       controller: 'QuotesIndexController'
     })

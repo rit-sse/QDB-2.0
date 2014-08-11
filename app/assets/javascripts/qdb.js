@@ -11,8 +11,12 @@ angular.module('QDB',
 
     $locationProvider.html5Mode(true);
 
-    $urlRouterProvider.when('/qdb/?goTo', ['$location', '$match', function($location, $match) {
-      $location.url('/qdb/' + $match.goTo);
+    $urlRouterProvider.when('/qdb/?goTo&page', ['$location', '$match', function($location, $match) {
+      var path = '/qdb/' + $match.goTo;
+      if($match.page){
+        path += '?page=' + $match.page;
+      }
+      $location.url(path);
     }]);
 
     $stateProvider

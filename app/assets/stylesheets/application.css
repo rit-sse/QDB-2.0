@@ -160,3 +160,13 @@ paper-tabs {
   margin-right: auto;
   width: 25%;
 }
+
+.centered {
+  text-align: center;
+}
+paper-icon-button#left{
+  margin: 20px;
+}
+paper-icon-button#right{
+  margin: 20px;
+}

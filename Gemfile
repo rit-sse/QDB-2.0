@@ -46,7 +46,12 @@ gem 'has_scope'
 # Use unicorn as the app server
 gem 'unicorn'
 
-gem 'will_paginate'
+gem 'kaminari'
+
+group :development do
+  gem "better_errors"
+  gem 'binding_of_caller'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

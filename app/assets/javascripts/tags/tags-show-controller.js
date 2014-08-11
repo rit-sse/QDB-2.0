@@ -1,11 +1,25 @@
 angular.module('tags').controller('TagsShowController',
-  ['$scope', '$http', '$location', '$stateParams',
-  function($scope, $http, $location, $stateParams){
-    $http.get('/qdb/api/quotes.json?by_tag=' + $stateParams.tag)
+  ['$scope', '$http', '$location', '$stateParams', '$state',
+  function($scope, $http, $location, $stateParams, $state){
+    $http.get('/qdb/api/quotes.json?by_tag=' + $stateParams.tag + '&page=' + $stateParams.page)
       .success(function(data){
-        $scope.quotes = data;
+        $scope.quotes = data.quotes;
+        $scope.first_page = data.first_page;
+        $scope.last_page = data.last_page;
+        if($scope.first_page){
+          $scope.page = 1;
+        }else{
+          $scope.page = parseInt($stateParams.page);
+        }
       });
     $scope.title = $stateParams.tag;
 
+    $scope.goBack = function(){
+      $state.go('qdb.quotes.index', {page: $scope.page-1});
+    }
+
+    $scope.goAhead = function(){
+      $state.go('qdb.quotes.index', {page: $scope.page+1});
+    }
   }]
 );

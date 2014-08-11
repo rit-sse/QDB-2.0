@@ -7,7 +7,7 @@ class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = apply_scopes(Quote).approved
+    @quotes = apply_scopes(Quote).approved.page(params[:page])
     respond_to do |format|
       format.json
       format.rss {render :layout => false}

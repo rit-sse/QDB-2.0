@@ -12,7 +12,7 @@ angular.module('tags',['ui.router'])
       controller: 'TagsIndexController'
     })
     .state('qdb.tags.show', {
-      url: '/:tag',
+      url: '/:tag?page',
       templateUrl: '/qdb/assets/quotes/index.html',
       controller: 'TagsShowController'
     });

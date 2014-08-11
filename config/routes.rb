@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     post '/logout' => 'auth#logout'
   end
 
-  resources :quotes, only: :index, format: {format: :rss}
+  get '/quotes.rss' => 'quotes#index', format: :false, defaults: {format: :rss}
 
-  get '/*path' => redirect('/qdb/?goTo=%{path}')
+  get '/*path' => redirect{ |params, request| "/qdb/?goTo=#{request.params[:path]}&" +  (request.params[:page].nil? ? "" : "page=#{request.params[:page]}") }
   root 'home#index'
 end
