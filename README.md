@@ -1,6 +1,6 @@
 # QDB-2.0
 
-Rewrite of the SSE QDB using rails 4.1 and some other technologies not yet decided upon
+Rewrite of the SSE QDB using rails 4.1, Polymer, and Angular
 
 ## Technologies
 * Rails 4.1
