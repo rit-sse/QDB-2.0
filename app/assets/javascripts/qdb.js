@@ -4,26 +4,12 @@ angular.module('QDB',
   'tags',
   'quotes',
   'admin'])
-  .config(['$stateProvider', '$httpProvider', '$locationProvider', '$urlRouterProvider',
+  .config(['$stateProvider', '$httpProvider', '$locationProvider',
     function($stateProvider, $httpProvider, $locationProvider, $urlRouterProvider){
     authToken = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
     $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
 
     $locationProvider.html5Mode(true);
-
-    $urlRouterProvider.when('/qdb/?goTo&page&query', ['$location', '$match', function($location, $match) {
-      var path = '/qdb/' + $match.goTo;
-      if($match.page && $match.query) {
-        path += '?page=' + $match.page;
-        path += '&query' + $match.query;
-      }else if($match.query) {
-        path += '?query=' + $match.query;
-      }else if($match.page) {
-        path += '?page=' + $match.page;
-      }
-
-      $location.url(path);
-    }]);
 
     $stateProvider
     .state('qdb', {
