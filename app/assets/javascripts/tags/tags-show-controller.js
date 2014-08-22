@@ -1,6 +1,9 @@
-angular.module('tags').controller('TagsShowController',
-  ['$scope', '$http', '$location', '$stateParams', '$state',
-  function($scope, $http, $location, $stateParams, $state){
+(function(){
+  angular
+    .module('tags')
+    .controller('TagsShowController', TagsShowController);
+
+  function TagsShowController($scope, $http, $location, $stateParams, $state){
     $http.get('/qdb/api/quotes.json?by_tag=' + $stateParams.tag + '&page=' + $stateParams.page)
       .success(function(data){
         $scope.quotes = data.quotes;
@@ -21,5 +24,5 @@ angular.module('tags').controller('TagsShowController',
     $scope.goAhead = function(){
       $state.go('qdb.tags.show', {page: $scope.page+1, tag: $stateParams.tag});
     }
-  }]
-);
+  }
+})();
