@@ -52,21 +52,6 @@ RSpec.describe QuotesController, :type => :controller do
     end
   end
 
-  describe "GET new" do
-    it "assigns a new quote as @quote" do
-      get :new, {}, valid_session
-      expect(assigns(:quote)).to be_a_new(Quote)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested quote as @quote" do
-      quote = Quote.create! valid_attributes
-      get :edit, {:id => quote.to_param}, valid_session
-      expect(assigns(:quote)).to eq(quote)
-    end
-  end
-
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Quote" do
