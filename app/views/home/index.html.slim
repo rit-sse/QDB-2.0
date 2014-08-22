@@ -22,14 +22,15 @@ core-drawer-panel#drawerPanel ng-controller='ToolbarController as toolbar'
 
     .content
       div ui-view=''
-paper-dialog#addDialog heading='Add a Quote' ng-controller='AddController as add'
-  paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='add.quote.body'
-  br
-  paper-input multiline='' label='Enter additional information' floatingLabel='' ng-model='add.quote.description'
-  br
-  paper-input multiline='' label='Enter any tags (space delimited)' floatingLabel='' ng-model='add.tags'
-  br
-  paper-button label='Cancel' ng-click='add.cancel()'
-  paper-button label='Okay' ng-click='add.submit()' style='float: right;'
+div ng-controller='AddController as add'
+  paper-dialog#addDialog heading='Add a Quote'
+    paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='add.quote.body'
+    br
+    paper-input multiline='' label='Enter additional information' floatingLabel='' ng-model='add.quote.description'
+    br
+    paper-input multiline='' label='Enter any tags (space delimited)' floatingLabel='' ng-model='add.tags'
+    br
+    paper-button label='Cancel' ng-click='add.cancel()'
+    paper-button label='Okay' ng-click='add.submit()' style='float: right;'
 
 paper-toast#notification
