@@ -1,5 +1,9 @@
-angular.module('admin').controller('LoginController', ['$scope', '$http', '$state',
-  function($scope, $http, $state){
+(function() {
+  angular
+    .module('admin')
+    .controller('LoginController', LoginController);
+
+  function LoginController($scope, $http, $state){
     $scope.submit = function(){
       var notice = document.querySelector('#notification')
       $http.post('/qdb/api/authorize.json', $scope.user).success(function(){
@@ -12,4 +16,4 @@ angular.module('admin').controller('LoginController', ['$scope', '$http', '$stat
       });
     }
   }
-]);
+})();

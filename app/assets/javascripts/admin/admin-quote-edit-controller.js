@@ -1,6 +1,9 @@
-angular.module('admin').controller('AdminQuoteEditController',
-  ['$state', '$scope', '$http', '$stateParams',
-  function($state, $scope, $http, $stateParams){
+(function() {
+  angular
+    .module('admin')
+    .controller('AdminQuoteEditController', AdminQuoteEditController);
+
+  function AdminQuoteEditController($state, $scope, $http, $stateParams){
     var path = '/qdb/api/quotes/' + $stateParams.id + '.json'
     $http.get(path).success(function(data){
       $scope.quote = data;
@@ -26,5 +29,5 @@ angular.module('admin').controller('AdminQuoteEditController',
         notice.show();
       });
     }
-  }]
-);
+  }
+})();
