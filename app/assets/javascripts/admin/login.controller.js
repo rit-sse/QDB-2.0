@@ -1,8 +1,13 @@
-angular.module('admin').controller('LoginController', ['$scope', '$http', '$state',
-  function($scope, $http, $state){
-    $scope.submit = function(){
+(function() {
+  angular
+    .module('qdb.admin')
+    .controller('LoginController', LoginController);
+
+  function LoginController($http, $state){
+    var vm = this;
+    vm.submit = function(){
       var notice = document.querySelector('#notification')
-      $http.post('/qdb/api/authorize.json', $scope.user).success(function(){
+      $http.post('/qdb/api/authorize.json', vm.user).success(function(){
         $state.go('qdb.admin.index');
         notice.text = 'Successfully logged in!';
         notice.show();
@@ -12,4 +17,4 @@ angular.module('admin').controller('LoginController', ['$scope', '$http', '$stat
       });
     }
   }
-]);
+})();

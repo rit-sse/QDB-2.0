@@ -1,20 +1,25 @@
-angular.module('admin').controller('AdminQuoteEditController',
-  ['$state', '$scope', '$http', '$stateParams',
-  function($state, $scope, $http, $stateParams){
+(function() {
+  angular
+    .module('qdb.admin')
+    .controller('AdminQuoteEditController', AdminQuoteEditController);
+
+  function AdminQuoteEditController($state, $http, $stateParams){
+    var vm = this;
+
     var path = '/qdb/api/quotes/' + $stateParams.id + '.json'
     $http.get(path).success(function(data){
-      $scope.quote = data;
-      $scope.quote.tags = _.pluck($scope.quote.tags, 'name').join(' ');
+      vm.quote = data;
+      vm.quote.tags = _.pluck(vm.quote.tags, 'name').join(' ');
     });
 
-    $scope.cancel = function(){
+    vm.cancel = function(){
       $state.go('qdb.admin.index');
     }
 
-    $scope.submit = function(){
+    vm.submit = function(){
       var params = {
-        quote: $scope.quote,
-        tags: $scope.quote.tags
+        quote: vm.quote,
+        tags: vm.quote.tags
       }
       var notice = document.querySelector('#notification');
       $http.put(path, params).success(function(){
@@ -26,5 +31,5 @@ angular.module('admin').controller('AdminQuoteEditController',
         notice.show();
       });
     }
-  }]
-);
+  }
+})();
