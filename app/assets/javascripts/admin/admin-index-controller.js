@@ -1,5 +1,9 @@
-angular.module('admin').controller('AdminIndexController', ['$scope', '$http', '$state',
-  function($scope, $http, $state){
+(function() {
+  angular
+    .module('admin')
+    .controller('AdminIndexController', AdminIndexController);
+
+  function AdminIndexController($scope, $http, $state){
     $http.get('/qdb/api/admin/quotes.json').success(function(data){
       $scope.quotes = data;
     });
@@ -37,4 +41,5 @@ angular.module('admin').controller('AdminIndexController', ['$scope', '$http', '
       $state.go('qdb.admin.edit', {id: quote});
     });
   }
-]);
+
+})();

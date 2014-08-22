@@ -1,5 +1,9 @@
-angular.module('admin', ['ui.router'])
-  .config(['$stateProvider', function($stateProvider) {
+(function(){
+  angular
+    .module('admin', ['ui.router'])
+    .config(config);
+
+  function config($stateProvider) {
     var checkLoggedIn = function($q, $timeout, $http, $state, $rootScope){
       var deferred = $q.defer();
       $http.get('/qdb/api/logged_in.json').success(function(user){
@@ -44,4 +48,5 @@ angular.module('admin', ['ui.router'])
         loggedIn: checkLoggedIn
       }
     });
-  }]);
+  }
+})();
