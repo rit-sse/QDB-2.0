@@ -1,12 +1,13 @@
 (function(){
   angular
-    .module('quotes')
+    .module('qdb.quotes')
     .controller('QuotesShowController', QuotesShowController);
 
-  function QuotesShowController($scope, $http, $location, $stateParams) {
+  function QuotesShowController($http, $location, $stateParams) {
+    var vm = this;
     $http.get('/qdb/api/quotes/' + $stateParams.id + '.json')
       .success(function(data){
-        $scope.quote = data;
+        vm.quote = data;
       });
   }
 })();

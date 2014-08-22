@@ -1,28 +1,30 @@
 (function(){
   angular
-    .module('quotes')
+    .module('qdb.quotes')
     .controller('QuotesSearchController', QuotesSearchController);
 
-  function QuotesSearchController($scope, $http, $location, $stateParams, $state) {
+  function QuotesSearchController($http, $location, $stateParams, $state) {
+    var vm = this;
     $http.get('/qdb/api/quotes.json?search=' + $stateParams.query + '&page=' + $stateParams.page)
       .success(function(data){
-        $scope.quotes = data.quotes;
-        $scope.first_page = data.first_page;
-        $scope.last_page = data.last_page;
-        if($scope.first_page){
-          $scope.page = 1;
+        vm.quotes = data.quotes;
+        vm.first_page = data.first_page;
+        vm.last_page = data.last_page;
+        if(vm.first_page){
+          vm.page = 1;
         }else{
-          $scope.page = parseInt($stateParams.page);
+          vm.page = parseInt($stateParams.page);
         }
       });
-    $scope.title = $stateParams.query;
 
-    $scope.goBack = function() {
-      $state.go('qdb.quotes.search', {page: $scope.page-1, query: $stateParams.query});
+    vm.title = $stateParams.query;
+
+    vm.goBack = function() {
+      $state.go('qdb.quotes.search', {page: vm.page-1, query: $stateParams.query});
     }
 
-    $scope.goAhead = function() {
-      $state.go('qdb.quotes.search', {page: $scope.page+1, query: $stateParams.query});
+    vm.goAhead = function() {
+      $state.go('qdb.quotes.search', {page: vm.page+1, query: $stateParams.query});
     }
   }
 })();

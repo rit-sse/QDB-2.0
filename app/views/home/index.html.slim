@@ -18,7 +18,7 @@ core-drawer-panel#drawerPanel ng-controller='ToolbarController as toolbar'
       span#logo flex=''
       paper-icon-button icon='search' onclick='searchToggle()'
       paper-icon-button#createButton icon='create' onclick='addDialogToggle()'
-      paper-input#search.none flex='' ng-model='search'
+      paper-input#search.none flex='' ng-model='toolbar.search'
 
     .content
       div ui-view=''
