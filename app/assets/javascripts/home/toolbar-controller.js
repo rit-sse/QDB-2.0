@@ -3,19 +3,19 @@
     .module('home')
     .controller('ToolbarController', ToolbarController);
 
-  function ToolbarController($scope, $state){
+  function ToolbarController($state){
     var tabs = ['qdb.index', 'qdb.quotes.index', 'qdb.tags.index'];
+    var vm = this;
 
-    $scope.goTo = function(state) {
+    vm.goTo = function(state) {
       $state.go(state);
       document.getElementById('drawerPanel').togglePanel();
     }
 
-    $scope.search = '';
+    vm.search = '';
 
     document.addEventListener('enter-pressed', function(event) {
-      console.log(event);
-      $state.go('qdb.quotes.search', { query: $scope.search });
+      $state.go('qdb.quotes.search', { query: vm.search });
       searchToggle();
     });
   }

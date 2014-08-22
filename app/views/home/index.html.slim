@@ -1,20 +1,20 @@
 core-media-query query="only screen and (max-width: 320px)"
-core-drawer-panel#drawerPanel ng-controller='ToolbarController'
+core-drawer-panel#drawerPanel ng-controller='ToolbarController as toolbar'
   core-header-panel drawer=''
     core-toolbar
       span Menu
     core-menu
-      paper-item label='Home' ng-click='goTo("qdb.index")'
-      paper-item label='Quotes' ng-click='goTo("qdb.quotes.index")'
-      paper-item label='Tags' ng-click='goTo("qdb.tags.index")'
+      paper-item label='Home' ng-click='toolbar.goTo("qdb.index")'
+      paper-item label='Quotes' ng-click='toolbar.goTo("qdb.quotes.index")'
+      paper-item label='Tags' ng-click='toolbar.goTo("qdb.tags.index")'
   core-header-panel mode='waterfall' main=''
     core-toolbar
       paper-icon-button#menuicon icon='menu'
       paper-tabs#tabs flex='' nobar=''
-        paper-tab ng-click='goTo("qdb.index")'
+        paper-tab ng-click='toolbar.goTo("qdb.index")'
           h2 SSE QDB
-        paper-tab ng-click='goTo("qdb.quotes.index")' Quotes
-        paper-tab ng-click='goTo("qdb.tags.index")' Tags
+        paper-tab ng-click='toolbar.goTo("qdb.quotes.index")' Quotes
+        paper-tab ng-click='toolbar.goTo("qdb.tags.index")' Tags
       span#logo flex=''
       paper-icon-button icon='search' onclick='searchToggle()'
       paper-icon-button#createButton icon='create' onclick='addDialogToggle()'
@@ -22,14 +22,14 @@ core-drawer-panel#drawerPanel ng-controller='ToolbarController'
 
     .content
       div ui-view=''
-paper-dialog#addDialog heading='Add a Quote' ng-controller='AddController'
-  paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='quote.body'
+paper-dialog#addDialog heading='Add a Quote' ng-controller='AddController as add'
+  paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='add.quote.body'
   br
-  paper-input multiline='' label='Enter additional information' floatingLabel='' ng-model='quote.description'
+  paper-input multiline='' label='Enter additional information' floatingLabel='' ng-model='add.quote.description'
   br
-  paper-input multiline='' label='Enter any tags (space delimited)' floatingLabel='' ng-model='tags'
+  paper-input multiline='' label='Enter any tags (space delimited)' floatingLabel='' ng-model='add.tags'
   br
-  paper-button label='Cancel' ng-click='cancel()'
-  paper-button label='Okay' ng-click='submit()' style='float: right;'
+  paper-button label='Cancel' ng-click='add.cancel()'
+  paper-button label='Okay' ng-click='add.submit()' style='float: right;'
 
 paper-toast#notification

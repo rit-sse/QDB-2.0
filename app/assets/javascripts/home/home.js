@@ -8,7 +8,7 @@
     .state('qdb.index', {
       url: '',
       template: JST['home/index'](),
-      controller: 'HomeController'
+      controller: 'HomeController as home'
     })
   }
 })();

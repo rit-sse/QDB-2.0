@@ -3,18 +3,18 @@
     .module('home')
     .controller('AddController', AddController);
 
-  function AddController($scope, $http){
+  function AddController($http){
+    var vm = this;
+    vm.quote = {}
 
-    $scope.quote = {}
-
-    $scope.cancel = function() {
+    vm.cancel = function() {
       document.querySelector('#addDialog').toggle();
     }
 
-    $scope.submit = function() {
+    vm.submit = function() {
       var request = {
-        quote: $scope.quote,
-        tags: $scope.tags
+        quote: vm.quote,
+        tags: vm.tags
       }
       var notice = document.querySelector('#notification')
       $http.post('/qdb/api/quotes.json', request)
