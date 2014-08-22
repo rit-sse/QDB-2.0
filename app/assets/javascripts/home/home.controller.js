@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('home')
+    .module('qdb.home')
     .controller('HomeController', HomeController);
 
   function HomeController($rootScope){

@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('home')
+    .module('qdb.home')
     .controller('AddController', AddController);
 
   function AddController($http){

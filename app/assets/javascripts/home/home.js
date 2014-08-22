@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('home', ['ui.router'])
+    .module('qdb.home', ['ui.router'])
     .config(config);
 
   function config($stateProvider) {
