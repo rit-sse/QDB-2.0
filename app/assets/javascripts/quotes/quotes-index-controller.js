@@ -1,7 +1,10 @@
-angular.module('quotes').controller('QuotesIndexController',
-  ['$scope', '$http', '$stateParams', '$state',
-  function($scope, $http, $stateParams, $state){
-    $http.get('/qdb/api/quotes.json?page='+ $stateParams.page).success(function(data){
+(function(){
+  angular
+    .module('quotes')
+    .controller('QuotesIndexController', QuotesIndexController);
+
+  function QuotesIndexController($scope, $http, $stateParams, $state) {
+    $http.get('/qdb/api/quotes.json?page='+ $stateParams.page).success(function(data) {
       $scope.quotes = data.quotes;
       $scope.first_page = data.first_page;
       $scope.last_page = data.last_page;
@@ -13,12 +16,12 @@ angular.module('quotes').controller('QuotesIndexController',
     });
     $scope.title = 'Quotes';
 
-    $scope.goBack = function(){
+    $scope.goBack = function() {
       $state.go('qdb.quotes.index', {page: $scope.page-1});
     }
 
-    $scope.goAhead = function(){
+    $scope.goAhead = function() {
       $state.go('qdb.quotes.index', {page: $scope.page+1});
     }
-  }]
-);
+  }
+})();

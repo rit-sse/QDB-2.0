@@ -1,6 +1,9 @@
-angular.module('quotes').controller('QuotesSearchController',
-  ['$scope', '$http', '$location', '$stateParams', '$state',
-  function($scope, $http, $location, $stateParams, $state){
+(function(){
+  angular
+    .module('quotes')
+    .controller('QuotesSearchController', QuotesSearchController);
+
+  function QuotesSearchController($scope, $http, $location, $stateParams, $state) {
     $http.get('/qdb/api/quotes.json?search=' + $stateParams.query + '&page=' + $stateParams.page)
       .success(function(data){
         $scope.quotes = data.quotes;
@@ -14,12 +17,12 @@ angular.module('quotes').controller('QuotesSearchController',
       });
     $scope.title = $stateParams.query;
 
-    $scope.goBack = function(){
+    $scope.goBack = function() {
       $state.go('qdb.quotes.search', {page: $scope.page-1, query: $stateParams.query});
     }
 
-    $scope.goAhead = function(){
+    $scope.goAhead = function() {
       $state.go('qdb.quotes.search', {page: $scope.page+1, query: $stateParams.query});
     }
-  }]
-);
+  }
+})();
