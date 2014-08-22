@@ -1,13 +1,12 @@
 (function() {
   angular
-    .module('QDB', ['ui.router', 'ng-polymer-elements', 'tags', 'quotes', 'admin'])
+    .module('QDB', ['ui.router', 'ng-polymer-elements', 'home', 'tags', 'quotes', 'admin'])
     .config(config)
     .run(run);
 
   function config($stateProvider, $httpProvider, $locationProvider, $urlRouterProvider){
     var authToken = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
     $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
-
     $locationProvider.html5Mode(true);
 
     $stateProvider
@@ -15,12 +14,7 @@
       url: '/qdb',
       abstract: true,
       template: '<div ui-view />'
-    })
-    .state('qdb.index', {
-      url: '',
-      template: JST['home/home'](),
-      controller: 'HomeController'
-    })
+    });
   }
 
   function run($rootScope, $state){

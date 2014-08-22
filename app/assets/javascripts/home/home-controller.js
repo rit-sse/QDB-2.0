@@ -1,5 +1,9 @@
-angular.module('QDB').controller('HomeController', ['$rootScope',
-  function($rootScope){
+(function() {
+  angular
+    .module('home')
+    .controller('HomeController', HomeController);
+
+  function HomeController($rootScope){
     document.addEventListener('polymer-ready', function(){
       if($rootScope.message){
         var notice = document.querySelector('#notification');
@@ -9,4 +13,4 @@ angular.module('QDB').controller('HomeController', ['$rootScope',
       }
     });
   }
-]);
+})();

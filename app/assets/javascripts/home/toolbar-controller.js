@@ -1,5 +1,9 @@
-angular.module('QDB').controller('ToolbarController', ['$scope', '$state',
-  function($scope, $state){
+(function(){
+  angular
+    .module('home')
+    .controller('ToolbarController', ToolbarController);
+
+  function ToolbarController($scope, $state){
     var tabs = ['qdb.index', 'qdb.quotes.index', 'qdb.tags.index'];
 
     $scope.goTo = function(state) {
@@ -15,4 +19,4 @@ angular.module('QDB').controller('ToolbarController', ['$scope', '$state',
       searchToggle();
     });
   }
-]);
+})();

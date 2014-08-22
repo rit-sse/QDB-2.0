@@ -1,5 +1,9 @@
-angular.module('QDB').controller('AddController', ['$scope', '$http',
-  function($scope, $http){
+(function(){
+  angular
+    .module('home')
+    .controller('AddController', AddController);
+
+  function AddController($scope, $http){
 
     $scope.quote = {}
 
@@ -24,4 +28,4 @@ angular.module('QDB').controller('AddController', ['$scope', '$http',
         });
     }
   }
-]);
+})();
