@@ -8,12 +8,12 @@ angular.module('tags',['ui.router'])
     })
     .state('qdb.tags.index', {
       url: '',
-      templateUrl: '/qdb/assets/tags/index.html',
+      template: JST['tags/index'](),
       controller: 'TagsIndexController'
     })
     .state('qdb.tags.show', {
       url: '/:tag?page',
-      templateUrl: '/qdb/assets/quotes/index.html',
+      template: JST['quotes/index'](),
       controller: 'TagsShowController'
     });
   }]);

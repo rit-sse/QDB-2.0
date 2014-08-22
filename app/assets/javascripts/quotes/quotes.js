@@ -8,17 +8,17 @@ angular.module('quotes', ['ui.router'])
     })
     .state('qdb.quotes.index', {
       url: '?page',
-      templateUrl: '/qdb/assets/quotes/index.html',
+      template: JST['quotes/index'](),
       controller: 'QuotesIndexController'
     })
     .state('qdb.quotes.search', {
       url: '/search?query&page',
-      templateUrl: '/qdb/assets/quotes/index.html',
+      template: JST['quotes/index'](),
       controller: 'QuotesSearchController'
     })
     .state('qdb.quotes.show', {
       url: '/:id',
-      templateUrl: '/qdb/assets/quotes/show.html',
+      template: JST['quotes/show'](),
       controller: 'QuotesShowController'
     });
   }]);

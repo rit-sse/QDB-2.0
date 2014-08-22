@@ -19,7 +19,7 @@ angular.module('QDB',
     })
     .state('qdb.index', {
       url: '',
-      templateUrl: '/qdb/assets/home/home.html',
+      template: JST['home/home'](),
       controller: 'HomeController'
     })
   }])
