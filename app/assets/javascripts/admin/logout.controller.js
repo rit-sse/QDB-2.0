@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('admin')
+    .module('qdb.admin')
     .controller('LogoutController', LogoutController);
 
   function LogoutController($rootScope, $http, $state) {

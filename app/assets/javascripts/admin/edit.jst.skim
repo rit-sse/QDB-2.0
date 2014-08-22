@@ -1,10 +1,10 @@
 .center
   h1 Edit Quote
-  paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='quote.body'
+  paper-input multiline='' label='Enter your quote' floatingLabel='' ng-model='edit.quote.body'
   br
-  paper-input multiline='' label='Enter additional information' floatingLabel='' ng-model='quote.description'
+  paper-input multiline='' label='Enter additional information' floatingLabel='' ng-model='edit.quote.description'
   br
   paper-input multiline='' label='Enter any tags (space delimited)' floatingLabel='' ng-model='quote.tags'
   br
-  paper-button label='Cancel' ng-click='cancel()'
-  paper-button label='Okay' ng-click='submit()' style='float: right;'
+  paper-button label='Cancel' ng-click='edit.cancel()'
+  paper-button label='Okay' ng-click='edit.submit()' style='float: right;'

@@ -1,11 +1,13 @@
 (function() {
   angular
-    .module('admin')
+    .module('qdb.admin')
     .controller('AdminIndexController', AdminIndexController);
 
-  function AdminIndexController($scope, $http, $state){
+  function AdminIndexController($http, $state){
+    var vm = this;
+
     $http.get('/qdb/api/admin/quotes.json').success(function(data){
-      $scope.quotes = data;
+      vm.quotes = data;
     });
 
     document.addEventListener('quote-approve', function(event) {
@@ -15,7 +17,7 @@
       $http.post('/qdb/api/quotes/' + quote + '/approve.json').success(function(){
         notice.text = 'Successfully approved!'
         notice.show();
-        $scope.quotes.splice(index, 1);
+        vm.quotes.splice(index, 1);
       }).error(function(){
         notice.text = 'There was a problem approving the quote.'
         notice.show();
@@ -29,7 +31,7 @@
       $http.post('/qdb/api/quotes/' + quote + '/deny.json').success(function(){
         notice.text = 'Successfully denied!'
         notice.show();
-        $scope.quotes.splice(index, 1);
+        vm.quotes.splice(index, 1);
       }).error(function(){
         notice.text = 'There was a problem denying the quote.'
         notice.show();

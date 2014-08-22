@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('admin', ['ui.router'])
+    .module('qdb.admin', ['ui.router'])
     .config(config);
 
   function config($stateProvider) {
@@ -26,7 +26,7 @@
     .state('qdb.admin.login', {
       url: '/login',
       template: JST['admin/login'](),
-      controller: 'LoginController'
+      controller: 'LoginController as login'
     })
     .state('qdb.admin.logout',{
       url: '/logout',
@@ -35,7 +35,7 @@
     .state('qdb.admin.index', {
       url: '',
       template: JST['admin/index'](),
-      controller: 'AdminIndexController',
+      controller: 'AdminIndexController as index',
       resolve: {
         loggedIn: checkLoggedIn
       }
@@ -43,7 +43,7 @@
     .state('qdb.admin.edit', {
       url: '/quotes/:id/edit',
       template: JST['admin/edit'](),
-      controller: 'AdminQuoteEditController',
+      controller: 'AdminQuoteEditController as edit',
       resolve: {
         loggedIn: checkLoggedIn
       }
