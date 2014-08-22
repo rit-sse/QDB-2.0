@@ -1,5 +1,9 @@
-angular.module('admin', ['ui.router'])
-  .config(['$stateProvider', function($stateProvider) {
+(function(){
+  angular
+    .module('qdb.admin', ['ui.router'])
+    .config(config);
+
+  function config($stateProvider) {
     var checkLoggedIn = function($q, $timeout, $http, $state, $rootScope){
       var deferred = $q.defer();
       $http.get('/qdb/api/logged_in.json').success(function(user){
@@ -21,8 +25,8 @@ angular.module('admin', ['ui.router'])
     })
     .state('qdb.admin.login', {
       url: '/login',
-      templateUrl: '/qdb/assets/admin/login.html',
-      controller: 'LoginController'
+      template: JST['admin/login'](),
+      controller: 'LoginController as login'
     })
     .state('qdb.admin.logout',{
       url: '/logout',
@@ -30,18 +34,19 @@ angular.module('admin', ['ui.router'])
     })
     .state('qdb.admin.index', {
       url: '',
-      templateUrl: '/qdb/assets/admin/index.html',
-      controller: 'AdminIndexController',
+      template: JST['admin/index'](),
+      controller: 'AdminIndexController as index',
       resolve: {
         loggedIn: checkLoggedIn
       }
     })
     .state('qdb.admin.edit', {
       url: '/quotes/:id/edit',
-      templateUrl: '/qdb/assets/admin/edit.html',
-      controller: 'AdminQuoteEditController',
+      template: JST['admin/edit'](),
+      controller: 'AdminQuoteEditController as edit',
       resolve: {
         loggedIn: checkLoggedIn
       }
     });
-  }]);
+  }
+})();

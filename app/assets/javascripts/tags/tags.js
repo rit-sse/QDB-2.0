@@ -1,5 +1,9 @@
-angular.module('tags',['ui.router'])
-  .config(['$stateProvider', function($stateProvider) {
+(function(){
+  angular
+    .module('qdb.tags',['ui.router'])
+    .config(config);
+
+  function config($stateProvider) {
     $stateProvider
     .state('qdb.tags', {
       url: '/tags',
@@ -8,12 +12,13 @@ angular.module('tags',['ui.router'])
     })
     .state('qdb.tags.index', {
       url: '',
-      templateUrl: '/qdb/assets/tags/index.html',
-      controller: 'TagsIndexController'
+      template: JST['tags/index'](),
+      controller: 'TagsIndexController as tags'
     })
     .state('qdb.tags.show', {
       url: '/:tag?page',
-      templateUrl: '/qdb/assets/quotes/index.html',
-      controller: 'TagsShowController'
+      template: JST['quotes/index'](),
+      controller: 'TagsShowController as quotes'
     });
-  }]);
+  }
+})();

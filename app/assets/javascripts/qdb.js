@@ -1,14 +1,18 @@
-angular.module('QDB',
-  ['ui.router',
-  'ng-polymer-elements',
-  'tags',
-  'quotes',
-  'admin'])
-  .config(['$stateProvider', '$httpProvider', '$locationProvider',
-    function($stateProvider, $httpProvider, $locationProvider, $urlRouterProvider){
-    authToken = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
-    $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
+(function() {
+  angular
+    .module('QDB', [
+      'ui.router',
+      'ng-polymer-elements',
+      'qdb.home',
+      'qdb.tags',
+      'qdb.quotes',
+      'qdb.admin'])
+    .config(config)
+    .run(run);
 
+  function config($stateProvider, $httpProvider, $locationProvider, $urlRouterProvider){
+    var authToken = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
+    $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
     $locationProvider.html5Mode(true);
 
     $stateProvider
@@ -16,18 +20,16 @@ angular.module('QDB',
       url: '/qdb',
       abstract: true,
       template: '<div ui-view />'
-    })
-    .state('qdb.index', {
-      url: '',
-      templateUrl: '/qdb/assets/home/home.html',
-      controller: 'HomeController'
-    })
-  }])
-  .run(function($rootScope, $state){
+    });
+  }
+
+  function run($rootScope, $state){
     document.addEventListener('tag-clicked', function(event){
       $state.go('qdb.tags.show', {tag: event.detail.name});
     });
     document.addEventListener('quote-clicked', function(event){
       $state.go('qdb.quotes.show', {id: event.detail.id});
     });
-  });
+  }
+
+})();

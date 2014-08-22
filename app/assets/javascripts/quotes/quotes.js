@@ -1,5 +1,9 @@
-angular.module('quotes', ['ui.router'])
-  .config(['$stateProvider', function($stateProvider) {
+(function(){
+  angular
+    .module('qdb.quotes', ['ui.router'])
+    .config(config);
+
+  function config($stateProvider) {
     $stateProvider
     .state('qdb.quotes', {
       url: '/quotes',
@@ -8,17 +12,18 @@ angular.module('quotes', ['ui.router'])
     })
     .state('qdb.quotes.index', {
       url: '?page',
-      templateUrl: '/qdb/assets/quotes/index.html',
-      controller: 'QuotesIndexController'
+      template: JST['quotes/index'](),
+      controller: 'QuotesIndexController as quotes'
     })
     .state('qdb.quotes.search', {
       url: '/search?query&page',
-      templateUrl: '/qdb/assets/quotes/index.html',
-      controller: 'QuotesSearchController'
+      template: JST['quotes/index'](),
+      controller: 'QuotesSearchController as quotes'
     })
     .state('qdb.quotes.show', {
       url: '/:id',
-      templateUrl: '/qdb/assets/quotes/show.html',
-      controller: 'QuotesShowController'
+      template: JST['quotes/show'](),
+      controller: 'QuotesShowController as quote'
     });
-  }]);
+  }
+})();
