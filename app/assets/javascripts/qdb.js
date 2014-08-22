@@ -14,6 +14,7 @@
     var authToken = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
     $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
     $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/qdb');
 
     $stateProvider
     .state('qdb', {
