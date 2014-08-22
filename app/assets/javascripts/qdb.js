@@ -4,7 +4,7 @@
       'ui.router',
       'ng-polymer-elements',
       'qdb.home',
-      'tags',
+      'qdb.tags',
       'qdb.quotes',
       'qdb.admin'])
     .config(config)

@@ -3,5 +3,5 @@
   hr
 
 #tags-list
-  span ng-repeat='tag in tags'
+  span ng-repeat='tag in tags.tags'
     qdb-tag-button name='{{tag.name}}'

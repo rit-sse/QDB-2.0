@@ -1,12 +1,13 @@
 (function() {
   angular
-    .module('tags')
+    .module('qdb.tags')
     .controller('TagsIndexController', TagsIndexController);
 
-  function TagsIndexController($scope, $http) {
+  function TagsIndexController($http) {
+    var vm = this;
     $http.get('/qdb/api/tags.json')
       .success(function(data){
-        $scope.tags = data;
+        vm.tags = data;
       });
   }
 })();

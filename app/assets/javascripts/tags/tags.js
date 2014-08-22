@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('tags',['ui.router'])
+    .module('qdb.tags',['ui.router'])
     .config(config);
 
   function config($stateProvider) {
@@ -13,12 +13,12 @@
     .state('qdb.tags.index', {
       url: '',
       template: JST['tags/index'](),
-      controller: 'TagsIndexController'
+      controller: 'TagsIndexController as tags'
     })
     .state('qdb.tags.show', {
       url: '/:tag?page',
       template: JST['quotes/index'](),
-      controller: 'TagsShowController'
+      controller: 'TagsShowController as quotes'
     });
   }
 })();
