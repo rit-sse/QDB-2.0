@@ -52,6 +52,11 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.2.1)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     has_scope (0.5.1)
     hike (1.2.3)
     i18n (0.6.11)
@@ -107,6 +112,8 @@ GEM
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
       rspec-mocks (~> 3.0.0)
+    rspec-collection_matchers (1.0.0)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -135,6 +142,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    shoulda-matchers (2.6.1)
+      activesupport (>= 3.0.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
       multi_json
@@ -193,6 +202,7 @@ DEPENDENCIES
   bower-rails (~> 0.8.3)
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
+  factory_girl_rails
   has_scope
   jbuilder (~> 2.0)
   jquery-rails
@@ -201,10 +211,12 @@ DEPENDENCIES
   ngannotate-rails
   pg
   rails (= 4.1.4)
+  rspec-collection_matchers
   rspec-html-matchers
   rspec-rails (~> 3.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  shoulda-matchers
   skim
   slim-rails
   spring
