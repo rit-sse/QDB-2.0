@@ -24,11 +24,11 @@ RSpec.describe QuotesController, type: :routing do
     end
 
     it "routes to #approve" do
-      expect(post: "api/quotes/1/approve").to route_to("quotes#approve", id: "1")
+      expect(put: "api/quotes/1/approve").to route_to("quotes#approve", id: "1")
     end
 
     it "routes to #deny" do
-      expect(post: "api/quotes/1/deny").to route_to("quotes#deny", id: "1")
+      expect(put: "api/quotes/1/deny").to route_to("quotes#deny", id: "1")
     end
 
     it "routes to #admin_index" do

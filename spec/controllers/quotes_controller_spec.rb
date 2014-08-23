@@ -90,14 +90,15 @@ RSpec.describe QuotesController, type: :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {body: "new quote", description: "new description" }
       }
 
       it "updates the requested quote" do
         quote = Quote.create! valid_attributes
         put :update, {id: quote.to_param, quote: new_attributes, format: :json}, valid_session
         quote.reload
-        skip("Add assertions for updated state")
+        expect(quote.body).to eql("new quote")
+        expect(quote.description).to eql("new description")
       end
 
       it "assigns the requested quote as @quote" do
@@ -106,7 +107,7 @@ RSpec.describe QuotesController, type: :controller do
         expect(assigns(:quote)).to eq(quote)
       end
 
-      it "have the proper status code" do
+      it "has the proper status code" do
         quote = Quote.create! valid_attributes
         put :update, {id: quote.to_param, quote: valid_attributes, format: :json}, valid_session
         expect(response).to have_http_status(:ok)
@@ -120,7 +121,7 @@ RSpec.describe QuotesController, type: :controller do
         expect(assigns(:quote)).to eq(quote)
       end
 
-      it "status code to be correct" do
+      it "has the correct status code" do
         quote = Quote.create! valid_attributes
         put :update, {id: quote.to_param, quote: invalid_attributes, format: :json}, valid_session
         expect(response).to have_http_status(:unprocessable_entity)
@@ -143,4 +144,47 @@ RSpec.describe QuotesController, type: :controller do
     end
   end
 
+  describe "PUT approve" do
+    it "approves the requested quote" do
+      quote = Quote.create! valid_attributes
+      expect(quote.approved).to be_nil
+      put :approve, {id: quote.to_param, format: :json}, valid_session
+      quote.reload
+      expect(quote.approved).to eql(true)
+    end
+
+    it "assigns the requested quote as @quote" do
+      quote = Quote.create! valid_attributes
+      put :approve, {id: quote.to_param, format: :json}, valid_session
+      expect(assigns(:quote)).to eq(quote)
+    end
+
+    it "has the correct status code" do
+      quote = Quote.create! valid_attributes
+      put :approve, {id: quote.to_param, format: :json}, valid_session
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  describe "PUT deny" do
+    it "denies the requested quote" do
+      quote = Quote.create! valid_attributes
+      expect(quote.approved).to be_nil
+      put :deny, {id: quote.to_param, format: :json}, valid_session
+      quote.reload
+      expect(quote.approved).to eql(false)
+    end
+
+    it "assigns the requested quote as @quote" do
+      quote = Quote.create! valid_attributes
+      put :deny, {id: quote.to_param, format: :json}, valid_session
+      expect(assigns(:quote)).to eq(quote)
+    end
+
+    it "has the correct status code" do
+      quote = Quote.create! valid_attributes
+      put :deny, {id: quote.to_param, format: :json}, valid_session
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end

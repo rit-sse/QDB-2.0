@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :quotes, except: [:new, :edit] do
       member do
-        post 'approve'
-        post 'deny'
+        put 'approve'
+        put 'deny'
       end
     end
 
