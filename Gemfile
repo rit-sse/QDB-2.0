@@ -28,7 +28,10 @@ gem 'spring',        group: :development
 gem 'slim-rails'
 gem 'skim'
 
-gem 'rspec-rails', '~>3.0'
+group :test, :development do
+  gem 'rspec-rails', '~>3.0'
+  gem 'rspec-html-matchers'
+end
 
 gem 'bower-rails', '~> 0.8.3'
 

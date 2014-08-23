@@ -1,15 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
-# Specs in this file have access to a helper object that includes
-# the AuthHelper. For example:
-#
-# describe AuthHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-RSpec.describe ApplicationHelper, :type => :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe ApplicationHelper, type: :helper do
+  context "html_import_tag" do
+    it "should output properly" do
+      expect(helper.html_import_tag("foo")).to have_tag("link", with: {rel: "import", href: "/qdb/assets/foo.html"})
+    end
+  end
 end
