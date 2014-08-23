@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe QuotesController, type: :routing do
   describe "routing" do
-
     it "routes to #index" do
       expect(get: "api/quotes").to route_to("quotes#index")
       expect(get: "quotes.rss").to route_to("quotes#index", format: :rss)
@@ -35,6 +34,5 @@ RSpec.describe QuotesController, type: :routing do
     it "routes to #admin_index" do
       expect(get: "api/admin/quotes").to route_to("quotes#admin_index")
     end
-
   end
 end
