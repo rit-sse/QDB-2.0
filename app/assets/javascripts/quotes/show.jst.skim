@@ -2,4 +2,4 @@
   h2 View Quote
   hr
 #quotes-list
-  qdb-quote quote='{{quote.quote}}'
+  qdb-quote quote='{{quote.quote}}' on-tag-click='goToTag($event)' on-quote-click='goToQuote($event)'
