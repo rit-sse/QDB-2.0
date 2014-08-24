@@ -28,9 +28,10 @@
     $rootScope.goToTag = function(event) {
       $state.go('qdb.tags.show', {tag: event.detail.name});
     }
-    document.addEventListener('quote-clicked', function(event){
+
+    $rootScope.goToQuote = function(event) {
       $state.go('qdb.quotes.show', {id: event.detail.id});
-    });
+    }
   }
 
 })();
