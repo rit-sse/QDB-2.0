@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   scope '/api' do
     resources :quotes, except: [:new, :edit] do
       member do

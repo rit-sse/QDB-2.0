@@ -34,6 +34,7 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'rspec-collection_matchers'
+  gem 'jasmine'
 end
 
 gem 'bower-rails', '~> 0.8.3'

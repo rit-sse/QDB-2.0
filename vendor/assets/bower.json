@@ -8,6 +8,7 @@
     "ng-polymer-elements": "latest",
     "angular-ui-router": "latest",
     "angular": "~>1.3",
+    "angular-mocks": "~>1.3",
     "underscore": "latest",
     "angular-material": "latest"
   }

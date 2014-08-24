@@ -6,7 +6,6 @@ require File.expand_path('../config/application', __FILE__)
 Rails.application.load_tasks
 
 namespace :server do
-
   task :start do
     if File.exists?('tmp/pids/unicorn.pid')
       pid = File.read('tmp/pids/unicorn.pid').to_i
@@ -27,5 +26,6 @@ namespace :server do
       puts 'Server already down'
     end
   end
-
 end
+
+task default: [:spec, 'jasmine:ci']
