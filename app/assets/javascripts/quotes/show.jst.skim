@@ -1,6 +1,5 @@
 .title
-  h2
-    | {{quote.quote.id}}
+  h2 View Quote
   hr
 #quotes-list
   qdb-quote quote='{{quote.quote}}'

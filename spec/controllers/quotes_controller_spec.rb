@@ -49,8 +49,22 @@ RSpec.describe QuotesController, type: :controller do
   describe "GET show" do
     it "assigns the requested quote as @quote" do
       quote = Quote.create! valid_attributes
+      quote.approved = true
+      quote.save
       get :show, {id: quote.to_param, format: :json}, valid_session
       expect(assigns(:quote)).to eq(quote)
+    end
+
+    it "should not assign quote when not approved and not logged in" do
+      quote = Quote.create! valid_attributes
+      get :show, {id: quote.to_param, format: :json}
+      expect(assigns(:quote)).to be_nil
+    end
+
+    it "should assign quote when not approved and logged in" do
+      quote = Quote.create! valid_attributes
+      get :show, {id: quote.to_param, format: :json}, valid_session
+      expect(assigns(:quote)).to eql(quote)
     end
   end
 
