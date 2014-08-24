@@ -1,14 +1,14 @@
 window.NG_POLYMER_ELEMENTS_EXTENDED_MAPPINGS = {
   qdbQuote: {
-    tagClick: {
+    onTagClick: {
       event: 'tag-clicked'
     },
-    quoteClick: {
+    onQuoteClick: {
       event: 'quote-clicked'
     }
   },
   qdbTagButton: {
-    tagClick: {
+    onTagClick: {
       event: 'tag-clicked'
     }
   }

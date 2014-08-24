@@ -2,6 +2,6 @@
   h2 Needs approval
 #quotes-list
   div ng-repeat='quote in index.quotes'
-    qdb-quote quote='{{quote}}' index='{{$index}}' admin='true' quote-click='goToQuote($event)' tag-click='goToTag($event)'
+    qdb-quote quote='{{quote}}' index='{{$index}}' admin='true' on-quote-click='goToQuote($event)' on-tag-click='goToTag($event)'
     br
 
