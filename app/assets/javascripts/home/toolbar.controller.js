@@ -14,9 +14,10 @@
 
     vm.search = '';
 
-    document.addEventListener('enter-pressed', function(event) {
+    vm.searchQuotes = function() {
+      console.log(vm.search);
       $state.go('qdb.quotes.search', { query: vm.search });
       searchToggle();
-    });
+    }
   }
 })();
