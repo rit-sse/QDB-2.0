@@ -14,7 +14,7 @@
       var quote = event.detail.id;
       var index = event.detail.index;
       var notice = document.querySelector('#notification');
-      $http.post('/qdb/api/quotes/' + quote + '/approve.json').success(function(){
+      $http.put('/qdb/api/quotes/' + quote + '/approve.json').success(function(){
         notice.text = 'Successfully approved!'
         notice.show();
         vm.quotes.splice(index, 1);
@@ -28,7 +28,7 @@
       var quote = event.detail.id;
       var index = event.detail.index;
       var notice = document.querySelector('#notification');
-      $http.post('/qdb/api/quotes/' + quote + '/deny.json').success(function(){
+      $http.put('/qdb/api/quotes/' + quote + '/deny.json').success(function(){
         notice.text = 'Successfully denied!'
         notice.show();
         vm.quotes.splice(index, 1);

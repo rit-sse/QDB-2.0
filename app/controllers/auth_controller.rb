@@ -1,6 +1,6 @@
 class AuthController < ApplicationController
   def authorize
-    if Rails.env.development? and
+    if Rails.env.development? or Rails.env.test? and
       params[:username] == "admin" and
       params[:password] == "admin"
 
