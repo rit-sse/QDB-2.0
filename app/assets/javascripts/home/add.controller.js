@@ -19,7 +19,7 @@
       var notice = document.querySelector('#notification')
       $http.post('/qdb/api/quotes.json', request)
         .success(function(){
-          notice.text = 'Succesfully submitted quote!';
+          notice.text = 'Quote submitted for moderation!';
           notice.show();
           document.querySelector('#addDialog').toggle();
         }).error(function(){

@@ -4,4 +4,4 @@
 
 #tags-list
   span ng-repeat='tag in tags.tags'
-    qdb-tag-button name='{{tag.name}}'
+    qdb-tag-button name='{{tag.name}}' on-tag-click='goToTag($event)'

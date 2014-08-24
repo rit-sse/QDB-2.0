@@ -21,6 +21,19 @@ class QuotesController < ApplicationController
   # GET /quotes/1
   # GET /quotes/1.json
   def show
+    if signed_in?
+      @quote = Quote.find_by_id(params[:id])
+    else
+      @quote = Quote.approved.find_by_id(params[:id])
+    end
+
+    respond_to do |format|
+      unless @quote.nil?
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.json { render :show, status: :not_found }
+      end
+    end
   end
 
   # POST /quotes

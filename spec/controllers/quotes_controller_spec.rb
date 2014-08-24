@@ -18,28 +18,30 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe QuotesController, :type => :controller do
+RSpec.describe QuotesController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Quote. As you add validations to Quote, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {body: "quote", description: "description" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {body: "", description: "description" }
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # QuotesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { { user: { username: 'admin', role: 'admin' } } }
 
   describe "GET index" do
     it "assigns all quotes as @quotes" do
       quote = Quote.create! valid_attributes
-      get :index, {}, valid_session
+      quote.approved = true
+      quote.save
+      get :index, {format: :json}, valid_session
       expect(assigns(:quotes)).to eq([quote])
     end
   end
@@ -47,23 +49,22 @@ RSpec.describe QuotesController, :type => :controller do
   describe "GET show" do
     it "assigns the requested quote as @quote" do
       quote = Quote.create! valid_attributes
-      get :show, {:id => quote.to_param}, valid_session
+      quote.approved = true
+      quote.save
+      get :show, {id: quote.to_param, format: :json}, valid_session
       expect(assigns(:quote)).to eq(quote)
     end
-  end
 
-  describe "GET new" do
-    it "assigns a new quote as @quote" do
-      get :new, {}, valid_session
-      expect(assigns(:quote)).to be_a_new(Quote)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested quote as @quote" do
+    it "should not assign quote when not approved and not logged in" do
       quote = Quote.create! valid_attributes
-      get :edit, {:id => quote.to_param}, valid_session
-      expect(assigns(:quote)).to eq(quote)
+      get :show, {id: quote.to_param, format: :json}
+      expect(assigns(:quote)).to be_nil
+    end
+
+    it "should assign quote when not approved and logged in" do
+      quote = Quote.create! valid_attributes
+      get :show, {id: quote.to_param, format: :json}, valid_session
+      expect(assigns(:quote)).to eql(quote)
     end
   end
 
@@ -71,31 +72,31 @@ RSpec.describe QuotesController, :type => :controller do
     describe "with valid params" do
       it "creates a new Quote" do
         expect {
-          post :create, {:quote => valid_attributes}, valid_session
+          post :create, {quote: valid_attributes, format: :json}, valid_session
         }.to change(Quote, :count).by(1)
       end
 
       it "assigns a newly created quote as @quote" do
-        post :create, {:quote => valid_attributes}, valid_session
+        post :create, {quote: valid_attributes, format: :json}, valid_session
         expect(assigns(:quote)).to be_a(Quote)
         expect(assigns(:quote)).to be_persisted
       end
 
-      it "redirects to the created quote" do
-        post :create, {:quote => valid_attributes}, valid_session
-        expect(response).to redirect_to(Quote.last)
+      it "have the proper status code" do
+        post :create, {quote: valid_attributes, format: :json}, valid_session
+        expect(response).to have_http_status(:created)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved quote as @quote" do
-        post :create, {:quote => invalid_attributes}, valid_session
+        post :create, {quote: invalid_attributes, format: :json}, valid_session
         expect(assigns(:quote)).to be_a_new(Quote)
       end
 
-      it "re-renders the 'new' template" do
-        post :create, {:quote => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+      it "have the proper status code" do
+        post :create, {quote: invalid_attributes, format: :json}, valid_session
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -103,40 +104,41 @@ RSpec.describe QuotesController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {body: "new quote", description: "new description" }
       }
 
       it "updates the requested quote" do
         quote = Quote.create! valid_attributes
-        put :update, {:id => quote.to_param, :quote => new_attributes}, valid_session
+        put :update, {id: quote.to_param, quote: new_attributes, format: :json}, valid_session
         quote.reload
-        skip("Add assertions for updated state")
+        expect(quote.body).to eql("new quote")
+        expect(quote.description).to eql("new description")
       end
 
       it "assigns the requested quote as @quote" do
         quote = Quote.create! valid_attributes
-        put :update, {:id => quote.to_param, :quote => valid_attributes}, valid_session
+        put :update, {id: quote.to_param, quote: valid_attributes, format: :json}, valid_session
         expect(assigns(:quote)).to eq(quote)
       end
 
-      it "redirects to the quote" do
+      it "has the proper status code" do
         quote = Quote.create! valid_attributes
-        put :update, {:id => quote.to_param, :quote => valid_attributes}, valid_session
-        expect(response).to redirect_to(quote)
+        put :update, {id: quote.to_param, quote: valid_attributes, format: :json}, valid_session
+        expect(response).to have_http_status(:ok)
       end
     end
 
     describe "with invalid params" do
       it "assigns the quote as @quote" do
         quote = Quote.create! valid_attributes
-        put :update, {:id => quote.to_param, :quote => invalid_attributes}, valid_session
+        put :update, {id: quote.to_param, quote: invalid_attributes, format: :json}, valid_session
         expect(assigns(:quote)).to eq(quote)
       end
 
-      it "re-renders the 'edit' template" do
+      it "has the correct status code" do
         quote = Quote.create! valid_attributes
-        put :update, {:id => quote.to_param, :quote => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+        put :update, {id: quote.to_param, quote: invalid_attributes, format: :json}, valid_session
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -145,15 +147,58 @@ RSpec.describe QuotesController, :type => :controller do
     it "destroys the requested quote" do
       quote = Quote.create! valid_attributes
       expect {
-        delete :destroy, {:id => quote.to_param}, valid_session
+        delete :destroy, {id: quote.to_param, format: :json}, valid_session
       }.to change(Quote, :count).by(-1)
     end
 
-    it "redirects to the quotes list" do
+    it "has the propper status code" do
       quote = Quote.create! valid_attributes
-      delete :destroy, {:id => quote.to_param}, valid_session
-      expect(response).to redirect_to(quotes_url)
+      delete :destroy, {id: quote.to_param, format: :json}, valid_session
+      expect(response).to have_http_status(:no_content)
     end
   end
 
+  describe "PUT approve" do
+    it "approves the requested quote" do
+      quote = Quote.create! valid_attributes
+      expect(quote.approved).to be_nil
+      put :approve, {id: quote.to_param, format: :json}, valid_session
+      quote.reload
+      expect(quote.approved).to eql(true)
+    end
+
+    it "assigns the requested quote as @quote" do
+      quote = Quote.create! valid_attributes
+      put :approve, {id: quote.to_param, format: :json}, valid_session
+      expect(assigns(:quote)).to eq(quote)
+    end
+
+    it "has the correct status code" do
+      quote = Quote.create! valid_attributes
+      put :approve, {id: quote.to_param, format: :json}, valid_session
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
+  describe "PUT deny" do
+    it "denies the requested quote" do
+      quote = Quote.create! valid_attributes
+      expect(quote.approved).to be_nil
+      put :deny, {id: quote.to_param, format: :json}, valid_session
+      quote.reload
+      expect(quote.approved).to eql(false)
+    end
+
+    it "assigns the requested quote as @quote" do
+      quote = Quote.create! valid_attributes
+      put :deny, {id: quote.to_param, format: :json}, valid_session
+      expect(assigns(:quote)).to eq(quote)
+    end
+
+    it "has the correct status code" do
+      quote = Quote.create! valid_attributes
+      put :deny, {id: quote.to_param, format: :json}, valid_session
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end

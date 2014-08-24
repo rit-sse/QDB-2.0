@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require underscore/underscore
 //= require angular/angular
+//= require custom-polymer-mappings
 //= require ng-polymer-elements/ng-polymer-elements
 //= require angular-ui-router/release/angular-ui-router
 //= require qdb
@@ -85,3 +86,4 @@ document.addEventListener('core-media-change', function(e) {
     matches = false
   }
 });
+

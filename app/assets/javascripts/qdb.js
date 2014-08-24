@@ -14,6 +14,7 @@
     var authToken = document.querySelector("meta[name=\"csrf-token\"]").getAttribute("content");
     $httpProvider.defaults.headers.common["X-CSRF-TOKEN"] = authToken;
     $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/qdb');
 
     $stateProvider
     .state('qdb', {
@@ -24,12 +25,13 @@
   }
 
   function run($rootScope, $state){
-    document.addEventListener('tag-clicked', function(event){
+    $rootScope.goToTag = function(event) {
       $state.go('qdb.tags.show', {tag: event.detail.name});
-    });
-    document.addEventListener('quote-clicked', function(event){
+    }
+
+    $rootScope.goToQuote = function(event) {
       $state.go('qdb.quotes.show', {id: event.detail.id});
-    });
+    }
   }
 
 })();
