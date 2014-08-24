@@ -16,6 +16,15 @@ window.NG_POLYMER_ELEMENTS_EXTENDED_MAPPINGS = {
     },
     onQuoteClick: {
       event: 'quote-clicked'
+    },
+    onQuoteApprove: {
+      event: 'quote-approve'
+    },
+    onQuoteDeny: {
+      event: 'quote-deny'
+    },
+    onQuoteEdit: {
+      event: 'quote-edit'
     }
   },
   qdbTagButton: {

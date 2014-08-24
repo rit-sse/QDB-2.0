@@ -10,7 +10,7 @@
       vm.quotes = data;
     });
 
-    document.addEventListener('quote-approve', function(event) {
+    vm.approveQuote = function(event) {
       var quote = event.detail.id;
       var index = event.detail.index;
       var notice = document.querySelector('#notification');
@@ -22,9 +22,9 @@
         notice.text = 'There was a problem approving the quote.'
         notice.show();
       });
-    });
+    }
 
-    document.addEventListener('quote-deny', function(event) {
+    vm.denyQuote = function(event) {
       var quote = event.detail.id;
       var index = event.detail.index;
       var notice = document.querySelector('#notification');
@@ -36,12 +36,12 @@
         notice.text = 'There was a problem denying the quote.'
         notice.show();
       });
-    });
+    }
 
-    document.addEventListener('quote-edit', function(event) {
+    vm.editQuote = function(event) {
       var quote = event.detail.id;
       $state.go('qdb.admin.edit', {id: quote});
-    });
+    }
   }
 
 })();
