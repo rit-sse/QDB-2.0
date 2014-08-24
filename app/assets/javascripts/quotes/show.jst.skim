@@ -3,4 +3,4 @@
     | {{quote.quote.id}}
   hr
 #quotes-list
-  qdb-quote quote='{{quote.quote}}'
+  qdb-quote quote='{{quote.quote}}' tag-click='goToTag($event)'
