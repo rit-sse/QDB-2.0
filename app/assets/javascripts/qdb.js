@@ -1,6 +1,6 @@
 (function() {
   angular
-    .module('QDB', [
+    .module('qdb', [
       'ui.router',
       'ng-polymer-elements',
       'qdb.home',

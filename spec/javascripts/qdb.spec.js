@@ -1,6 +1,6 @@
-describe('QDB module', function(){
+describe('qdb module', function(){
   beforeEach(function(){
-    module('QDB');
+    module('qdb');
   });
 
   describe('qdb state', function(){
@@ -8,7 +8,7 @@ describe('QDB module', function(){
       inject(function($state){
         this.qdb = $state.get('qdb');
       });
-    })
+    });
 
     it('should get the proper url', function(){
       expect(this.qdb.url).toBe('/qdb');
