@@ -20,7 +20,7 @@ Rewrite of the SSE QDB using rails 4.1, Polymer, and Angular
 
 ## How to run
 
-1. `bundle install`
+1. `bundle install --without production`
 2. `rake db:create`
 3. `rake db:migrate`
 4. `rake bower:install`
