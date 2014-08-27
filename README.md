@@ -25,3 +25,4 @@ Rewrite of the SSE QDB using rails 4.1, Polymer, and Angular
 3. `rake db:migrate`
 4. `rake bower:install`
 5. `rails server`
+6. Point your browser at `http://localhost:3000/qdb`
