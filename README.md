@@ -1,5 +1,5 @@
 # QDB-2.0
-[![Build Status](https://travis-ci.org/kristenmills/QDB-2.0.svg)](https://travis-ci.org/kristenmills/QDB-2.0)
+[![Build Status](https://travis-ci.org/rit-sse/QDB-2.0.svg)](https://travis-ci.org/kristenmills/QDB-2.0)
 [![Code Climate](https://codeclimate.com/github/kristenmills/QDB-2.0/badges/gpa.svg)](https://codeclimate.com/github/kristenmills/QDB-2.0)
 [![Test Coverage](https://codeclimate.com/github/kristenmills/QDB-2.0/badges/coverage.svg)](https://codeclimate.com/github/kristenmills/QDB-2.0)
 
