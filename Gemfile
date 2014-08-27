@@ -54,6 +54,8 @@ gem 'ngannotate-rails'
 gem 'unicorn', group: :production
 gem 'thin'
 
+gem 'tzinfo-data'
+
 gem 'kaminari'
 
 gem "codeclimate-test-reporter", group: :test, require: nil
