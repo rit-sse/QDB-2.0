@@ -2,12 +2,7 @@
   h2
     | {{quotes.title}}
   hr
-#quotes-list
+#quotes-list infinite-scroll='quotes.getNextPage()' infinite-scroll-distance='1' infinite-scroll-disabled='quotes.loading' infinite-scroll-container="quotes.container"
   div ng-repeat='quote in quotes.quotes'
     qdb-quote.something quote='{{quote}}' on-tag-click='goToTag($event)' on-quote-click='goToQuote($event)'
     br
-.centered
-  paper-icon-button#left icon='chevron-left' ng-if='!quotes.first_page' ng-click='quotes.goBack()'
-  paper-icon-button#left disabled='' icon='chevron-left' ng-if='quotes.first_page'
-  paper-icon-button#right icon='chevron-right' ng-if='!quotes.last_page' ng-click='quotes.goAhead()'
-  paper-icon-button#right disabled='' icon='chevron-right' ng-if='quotes.last_page'

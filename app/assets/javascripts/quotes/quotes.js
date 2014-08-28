@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('qdb.quotes', ['ui.router'])
+    .module('qdb.quotes', ['ui.router', 'infinite-scroll'])
     .config(config);
 
   function config($stateProvider) {

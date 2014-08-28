@@ -19,6 +19,7 @@
 //= require custom-polymer-mappings
 //= require ng-polymer-elements/ng-polymer-elements
 //= require angular-ui-router/release/angular-ui-router
+//= require ngInfiniteScroll/build/ng-infinite-scroll
 //= require qdb
 //= require home/home
 //= require tags/tags
